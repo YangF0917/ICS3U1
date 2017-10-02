@@ -12,5 +12,9 @@ public class Hypotenuse extends ConsoleProgram{
         hyp = Math.sqrt(Math.pow(sidea,2)+Math.pow(sideb,2));
         //Output hypotenuse
         System.out.println("The hypotenuse of the triangle is "+ hyp);
+
+        double deg;
+        deg = readDouble("Enter the angle measure in degrees: ");
+        System.out.println(Math.cos(Math.toRadians(deg)));
     }
 }
