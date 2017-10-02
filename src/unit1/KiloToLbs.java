@@ -8,5 +8,6 @@ public class KiloToLbs extends ConsoleProgram{
         double kg;
         kg = readDouble("What is your weight in kilos? ");
         System.out.println("You weight "+2.2*kg+" lbs");
+        
     }
 }
