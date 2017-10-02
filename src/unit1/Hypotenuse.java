@@ -11,6 +11,6 @@ public class Hypotenuse extends ConsoleProgram{
         //Compute hypotenuse
         hyp = Math.sqrt(Math.pow(sidea,2)+Math.pow(sideb,2));
         //Output hypotenuse
-        System.out.println("The hypotenuse of the triangle is ")
+        System.out.println("The hypotenuse of the triangle is "+ hyp);
     }
 }
