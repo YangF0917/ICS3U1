@@ -1,4 +1,4 @@
-package unit1;
+package unit1.MathProblems;
 import codehs.ConsoleProgram;
 
 public class Cake extends ConsoleProgram{

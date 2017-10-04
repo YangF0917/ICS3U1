@@ -1,8 +1,5 @@
 package unit1;
 import codehs.*;
-import com.sun.org.apache.bcel.internal.generic.StackProducer;
-
-import javax.jnlp.IntegrationService;
 
 public class PolynomialSolver extends ConsoleProgram{
     public void run() {
@@ -17,10 +14,10 @@ public class PolynomialSolver extends ConsoleProgram{
         for (int i = 0; i<degree+1;i++){
             poly[i] = readInt("Enter the coefficient of the polynomial at degree: "+i+": ");
         }
+
         int counter =0;
-        for (int j = 1; j<poly[degree+1];j++){
+        for (int j = 1; j<poly[degree+1]; j++){
 
         }
-        Stack<Integer>s =new Stack<Integer>();
     }
 }

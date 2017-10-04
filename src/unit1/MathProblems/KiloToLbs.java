@@ -1,4 +1,4 @@
-package unit1;
+package unit1.MathProblems;
 import codehs.ConsoleProgram;
 
 import java.io.Console;

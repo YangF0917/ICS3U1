@@ -1,4 +1,4 @@
-package unit1;
+package unit1.MathProblems;
 import codehs.*;
 
 public class AreaSin extends ConsoleProgram{
