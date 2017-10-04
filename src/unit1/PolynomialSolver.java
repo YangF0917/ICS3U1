@@ -15,9 +15,23 @@ public class PolynomialSolver extends ConsoleProgram{
             poly[i] = readInt("Enter the coefficient of the polynomial at degree: "+i+": ");
         }
 
-        int counter =0;
-        for (int j = 1; j<poly[degree+1]; j++){
-
+        int counter = 0;
+        int counter2 = 0;
+        for (int j = 1; j<poly[degree]; j++){
+            if (poly[degree]%j == 0){
+                counter++;
+            }
+        }
+        int[] faca = new int[poly[degree]];
+        for (int k = 1; k<=poly[degree];k++){
+            if (poly[degree]%k == 0){
+                faca[counter2] = k;
+                counter2++;
+            }
+            if ();
+        }
+        for (int l = 0; l<counter; l++){
+            System.out.println(faca[l]);
         }
     }
 }
