@@ -38,7 +38,7 @@ public class PolynomialSolver extends ConsoleProgram{
             }
         }
         // Create an array to hold all the factors of the first non-zero coefficient
-        
+
         for (int l = 0; l<counter; l++){
             System.out.println(faca[l]);
         }
