@@ -3,6 +3,6 @@ import codehs.*;
 
 public class LiveHackProblem1 extends ConsoleProgram{
     public void run(){
-        
+
     }
 }
