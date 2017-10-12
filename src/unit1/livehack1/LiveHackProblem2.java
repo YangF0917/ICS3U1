@@ -19,7 +19,7 @@ public class LiveHackProblem2 extends ConsoleProgram{
         degf = readDouble("Enter the temperature in Fahrenheit: ");
 
         // Compute c = 5.0 / 9 * (f - 32);
-        degc = (5.0 / 9) * (f - 32);
+        degc = (5.0 / 9) * (degf - 32);
 
         // Output c
         System.out.println("The temperature in Celsius is "+degc+" degrees.");
