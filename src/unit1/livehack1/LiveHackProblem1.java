@@ -10,7 +10,7 @@ import codehs.*;
 public class LiveHackProblem1 extends ConsoleProgram{
     public void run()
     {
-        // Create a for the side length of the rectangular pentagon and d for the length of the diagonal
+        // Create a for the side length of the regular pentagon and d for the length of the diagonal
         double a;
         double d;
         // Get a from user input
@@ -18,6 +18,6 @@ public class LiveHackProblem1 extends ConsoleProgram{
         // Compute  d = a*(1 + Math.sqrt(5))/2
         d = a*(1 + Math.sqrt(5))/2;
         // Output the value of d
-        System.out.println("The diagonal of a rectangular pentagon with side length "+ a + " is "+d);
+        System.out.println("The diagonal of a regular pentagon with side length "+ a + " is "+d);
     }
 }
