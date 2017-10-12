@@ -38,7 +38,23 @@ public class PolynomialSolver extends ConsoleProgram{
             }
         }
         // Create an array to hold all the factors of the first non-zero coefficient
+        int[] facb = new int[poly[index]];
+        for (int k = 1; k<=poly[degree];k++){
+            if (poly[degree]%k == 0){
+                facb[counter2] = k;
+                counter2++;
+            }
+            if (k == poly[degree]){
+                facb[counter2] = k;
+            }
+        }
+        // Use remainder theorem to find out whether f(x) = 0
+        for (int i = 0; i<faca.length; i++){
+            for (int j = 0; j<facb.length; j++){
 
+            }
+        }
+        // Testing section
         for (int l = 0; l<counter; l++){
             System.out.println(faca[l]);
         }
