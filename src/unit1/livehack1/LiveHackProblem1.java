@@ -18,9 +18,9 @@ public class LiveHackProblem1 extends ConsoleProgram{
         sideA = readDouble("Enter the side length of the pentagon: ");
 
         // Compute  d = a*(1 + Math.sqrt(5))/2
-        diag = sideA*(1 + Math.sqrt(5))/2;
+        diag = sideA * (1 + Math.sqrt(5)) / 2;
 
         // Output the value of d
-        System.out.println("The diagonal of a regular pentagon with side length "+ sideA + " is "+diag);
+        System.out.println("The diagonal of a regular pentagon with side length " + sideA + " is " + diag);
     }
 }
