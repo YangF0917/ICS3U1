@@ -12,16 +12,16 @@ public class LiveHackProblem2 extends ConsoleProgram{
     public void run (){
 
         // Create f and c variables to store the temperature in fahrenheit and celsius respectively
-        double f;
-        double c;
+        double degf;
+        double degc;
 
         // Get f from user input
-        f = readDouble("Enter the temperature in Fahrenheit: ");
+        degf = readDouble("Enter the temperature in Fahrenheit: ");
 
         // Compute c = 5.0 / 9 * (f - 32);
-        c = (5.0 / 9) * (f - 32);
+        degc = (5.0 / 9) * (f - 32);
 
         // Output c
-        System.out.println("The temperature in Celsius is "+c+" degrees.");
+        System.out.println("The temperature in Celsius is "+degc+" degrees.");
     }
 }
