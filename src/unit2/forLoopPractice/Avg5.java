@@ -1,6 +1,6 @@
 package unit2.forLoopPractice;
 import codehs.*;
-import java.util.*
+import java.util.*;
 
 public class Avg5 extends ConsoleProgram {
     public void run()
