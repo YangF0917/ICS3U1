@@ -1,6 +1,5 @@
 package unit2.forLoopPractice;
 import codehs.*;
-import java.util.*;
 
 public class Sum5 extends ConsoleProgram {
     public void run()
