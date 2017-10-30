@@ -1,4 +1,15 @@
 package unit2.forLoopPractice.livehack2;
+import codehs.*;
 
-public class liveHack2Problem2 {
+/**
+ * A simple program
+ * @author: F. Yang
+ *
+ */
+
+public class liveHack2Problem2 extends ConsoleProgram{
+    public void run()
+    {
+
+    }
 }
