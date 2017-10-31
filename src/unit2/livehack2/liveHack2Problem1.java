@@ -2,7 +2,7 @@ package unit2.livehack2;
 import codehs.*;
 
 /**
- * A simple program
+ * A simple program that finds the distance of the Athabascan Glacier from the lodge given a year from user input
  * @author: F. Yang
  *
  */
@@ -32,7 +32,7 @@ public class liveHack2Problem1 extends ConsoleProgram{
             is being accessed (i) by using (i - 2017)
             By using distance += (i - 2017) * 7; the addition from the last year would be added to the value stored in
             distance
-            It is also possible to use distance += 7; but it would not work for values less than 2017
+            It is also possible (and simpler) to use distance += 7;
             */
                 distance = 800 + (i - 2017) * 7;
 

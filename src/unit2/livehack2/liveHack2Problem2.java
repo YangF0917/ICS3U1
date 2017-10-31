@@ -2,7 +2,7 @@ package unit2.livehack2;
 import codehs.*;
 
 /**
- * A simple program
+ * A simple program that finds the year that the Athabascan Lodge will close
  * @author: F. Yang
  *
  */
