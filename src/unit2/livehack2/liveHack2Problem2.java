@@ -14,14 +14,19 @@ public class liveHack2Problem2 extends ConsoleProgram{
         int distance = 800;
         int year = 2017;
 
-        // Using a while loop, find out when the distance would be greater than or equal to 1600
+        // Continue to check whether distance is less than 1600 m
         while (distance < 1600)
         {
+            /*
+            If the distance is less than 1600, then it adds 7 to the distance and 1 to the year
+            And then checks again for the next year. The loop stops once it has a year and a distance greater than or
+            equal to 1600 m
+            */
             distance += 7;
             year++;
         }
 
         // After the while loop has finished changing the value of year, output the variable year
-        System.out.println(year);
+        System.out.println("The lodge will need to close in "+year);
     }
 }
