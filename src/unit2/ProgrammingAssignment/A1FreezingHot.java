@@ -13,15 +13,12 @@ import java.util.*;
 
 public class A1FreezingHot extends ConsoleProgram{
     public void run(){
-        // Creating a new Scanner to ask for the user input
-        Scanner sc = new Scanner (System.in);
-
         // Create 2 temperature variables to hold the temperatures that the user will input
         int temp1, temp2;
 
         // Get the temperatures from the user
-        temp1 = sc.nextInt();
-        temp2 = sc.nextInt();
+        temp1 = readInt("Enter the first temperature: \n");
+        temp2 = readInt("Enter the second temperature: \n");
 
         // Create a Boolean variable to hold output and initialize it to be false
         boolean isFreezingHot = false;
