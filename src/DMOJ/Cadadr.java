@@ -1,9 +1,10 @@
+package DMOJ;
 import codehs.ConsoleProgram;
 import java.io.*;
 import java.util.*;
 
-public class Cadadr{
-    public static void main(String[] args) {
+public class Cadadr extends ConsoleProgram{
+    public void run() {
         Scanner sc = new Scanner(System.in);
         String use = sc.nextLine();
         for (int i = 2; i < use.length()-4; i++){
@@ -17,7 +18,7 @@ public class Cadadr{
             }
         }
         System.out.print(" x");
-        for (int i = 2; i < use.length()-4; i++){
+        for (int i = 2; i < use.length()-4; i++) {
             System.out.print(")");
         }
     }
