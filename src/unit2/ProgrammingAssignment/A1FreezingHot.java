@@ -7,6 +7,7 @@ import java.util.*;
  * determined by 2 temperatures given by the user
  * one being greater than 100 and the other being
  * less than 0
+ *
  * @author: F. Yang
  *
  */
