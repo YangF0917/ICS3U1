@@ -26,13 +26,20 @@ public class B2GuessingGame extends ConsoleProgram{
         System.out.println(secretNum);
 
         // Have the user guess as long as he has made less than 5 guesses
-        for (int guessNumber = 0; guessNumber < 5; guessNumber++)
+        guess = readInt("Enter your guess:\n");
+        for (int guessNumber = 1; guessNumber < 5; guessNumber++)
         {
-            guess = readInt("Enter your guess: ");
             if (guess == secretNum)
             {
                 System.out.println("Congrats you guessed the number");
                 guessNumber = 5;
+            }
+            else if (guess < secretNum)
+            {
+                guess = readInt("Too low, guess again:\n");
+            }
+            else{
+                guess = readInt("Too high guess again:\n");
             }
         }
         if (guess != secretNum)
