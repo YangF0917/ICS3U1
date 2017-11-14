@@ -19,15 +19,25 @@ public class B2GuessingGame extends ConsoleProgram{
 
         // Create 2 integer variables, one for the secret number and one for the guess that the user makes
         int secretNum;
-        int guess;
+        int guess = 0;
 
         // Initialize the secretNum variable using the Random object
         secretNum = numGen.nextInt(100)+1;
+        System.out.println(secretNum);
 
         // Have the user guess as long as he has made less than 5 guesses
         for (int guessNumber = 0; guessNumber < 5; guessNumber++)
         {
-
+            guess = readInt("Enter your guess: ");
+            if (guess == secretNum)
+            {
+                System.out.println("Congrats you guessed the number");
+                guessNumber = 5;
+            }
+        }
+        if (guess != secretNum)
+        {
+            System.out.println("Nice Try");
         }
     }
 }
