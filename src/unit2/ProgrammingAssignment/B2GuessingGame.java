@@ -29,19 +29,25 @@ public class B2GuessingGame extends ConsoleProgram{
         guess = readInt("Enter your guess:\n");
         for (int guessNumber = 1; guessNumber < 5; guessNumber++)
         {
+            // First check if their guess is equal to the secret number
             if (guess == secretNum)
             {
+                // if true, then output congratulations and set guessNumber to 5 to stop the for loop
                 System.out.println("Congrats you guessed the number");
                 guessNumber = 5;
             }
+            // If they guessed incorrectly, check whether their guess was too high or low
             else if (guess < secretNum)
             {
+                // If their guess was too low, Output too low and have the user reenter another number
                 guess = readInt("Too low, guess again:\n");
             }
             else{
+                // If their guess was too high, output too high and have the user reenter another number
                 guess = readInt("Too high guess again:\n");
             }
         }
+        // At the end of the 5 guesses, if they hadn't guessed it correctly output nice try
         if (guess != secretNum)
         {
             System.out.println("Nice Try");
