@@ -12,6 +12,15 @@ import codehs.*;
 
 public class B4IsPrime extends ConsoleProgram{
     public void run(){
-        // Create a variable to hold the 
+        // Create a variable to hold the user input
+        int userNum;
+
+        // Get the value of userNum from the user
+        userNum = readInt("Enter your number \n");
+
+        // Create a counter variable that will act as a counter for the factors of the number
+        int factors;
+
+        // 
     }
 }
