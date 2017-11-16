@@ -19,8 +19,29 @@ public class B4IsPrime extends ConsoleProgram{
         userNum = readInt("Enter your number \n");
 
         // Create a counter variable that will act as a counter for the factors of the number
-        int factors;
+        int factors = 0;
 
-        // 
+        /*
+        Use a loop to find out whether num is a factor of the userNum, num is initialized at 1 to avoid divide by 0
+        errors and also because 0 is not a factor of any number that the user chooses.
+        Also, the maximum unique factor of a number is the square root of the number thus in order to preven repeats,
+        The loop repeats until it hits the square root rounded down to the nearest one
+         */
+        for (int num = 1; num <= Math.sqrt(userNum); num++)
+        {
+            // Test whether the user's number is divisible by the number
+            if (userNum % num == 0)
+            {
+                factors++;
+            }
+        }
+        if (factors == 2)
+        {
+            System.out.println(userNum+ " is a Prime Number");
+        }
+        else if (factors > 2)
+        {
+            System.out.println(userNum + " is a Composite Number");
+        }
     }
 }
