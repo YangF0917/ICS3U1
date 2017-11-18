@@ -36,15 +36,21 @@ public class B4IsPrime extends ConsoleProgram{
                 factors++;
             }
         }
-        // A prime number only has 2 factors, one and itself
-        if (factors == 2)
-        {
-            System.out.println(userNum+ " is a Prime Number");
+        /*
+         A prime number only has 2 factors, one and itself, however, the code only tests for half of the factors.
+         however it also needs to make an exception for 1;
+          */
+        if (userNum != 1) {
+            if (factors == 1) {
+                System.out.println(userNum + " is a Prime Number");
+            }
+            // Just in case the user picks a number like 1;
+            else if (factors > 1) {
+                System.out.println(userNum + " is a Composite Number");
+            }
         }
-        // Just in case the user picks a number like 1;
-        else if (factors > 2)
-        {
-            System.out.println(userNum + " is a Composite Number");
+        else{
+            System.out.println("1 is neither a prime nor composite number");
         }
     }
 }
