@@ -44,11 +44,15 @@ public class B4IsPrime extends ConsoleProgram{
             if (factors == 1) {
                 System.out.println(userNum + " is a Prime Number");
             }
-            // Just in case the user picks a number like 1;
+            /*
+            If the number has more than one factor that is less than the square root of the original number,
+            then it is a composite number
+                */
             else if (factors > 1) {
                 System.out.println(userNum + " is a Composite Number");
             }
         }
+        // Print an exception for one
         else{
             System.out.println("1 is neither a prime nor composite number");
         }
