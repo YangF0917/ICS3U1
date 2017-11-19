@@ -1,6 +1,15 @@
 package unit2.ProgrammingAssignment;
 import codehs.*;
 
+/**
+ * A simple program that will take a string from the user and
+ * output whether the string "abc" appears in the middle of
+ * the string
+ *
+ * @author: F. Yang
+ *
+ */
+
 public class C3MiddleAbc extends ConsoleProgram{
     public void run(){
         // Create a variable to hold the string that the user inputs

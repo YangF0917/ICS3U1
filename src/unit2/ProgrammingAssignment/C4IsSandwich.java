@@ -15,7 +15,7 @@ public class C4IsSandwich extends ConsoleProgram{
         int firstBread = userIn.indexOf("bread");
 
         // Create a value to hold the last index of bread that was found using multiple substrings
-        
+
     }
 
 }
