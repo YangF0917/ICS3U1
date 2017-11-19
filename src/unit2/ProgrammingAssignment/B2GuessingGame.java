@@ -22,7 +22,7 @@ public class B2GuessingGame extends ConsoleProgram{
         int guess = 0;
 
         // Initialize the secretNum variable using the Random object
-        secretNum = numGen.nextInt(100)+1;
+        secretNum = numGen.nextInt(100)+ 1;
         System.out.println(secretNum);
 
         // Have the user guess as long as he has made less than 5 guesses
