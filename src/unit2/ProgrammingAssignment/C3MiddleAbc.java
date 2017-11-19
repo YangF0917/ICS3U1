@@ -22,7 +22,7 @@ public class C3MiddleAbc extends ConsoleProgram{
         boolean isAbcMiddle = false;
 
         // Check whether the user inputted an empty string
-        if (!userIn.equals("")) {
+        if (!userIn.equals("")){
             // First check whether the length of the string is perfectly divisible by 2 and do something accordingly
             if (userIn.length() % 2 == 1) {
             /*
@@ -40,7 +40,7 @@ public class C3MiddleAbc extends ConsoleProgram{
             AabcBB, the index of abc is 1, the string length is 6, so the result would be length / 2 - 2
             AAabcB the index of abc is 2, the string length is 6, so the result would be length / 2 - 1
             These are the only two cases for even numbers therefore if either are correct, then abc is in the middle
-             */
+              */
                 if (userIn.substring(userIn.length() / 2 - 1, userIn.length() / 2 + 2).equals("abc") || userIn.substring
                         (userIn.length() / 2 - 2, userIn.length() / 2 + 1).equals("abc")) {
                     isAbcMiddle = true;
