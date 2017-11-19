@@ -21,11 +21,12 @@ public class C3MiddleAbc extends ConsoleProgram{
         // Create a boolean value to hold the output at the end and default it to false
         boolean isAbcMiddle = false;
 
-        // First check whether the length of the string is perfectly divisible by 2 and do something accordingly
+        // Check whether the user inputted an empty string
         if (!userIn.equals("")) {
+            // First check whether the length of the string is perfectly divisible by 2 and do something accordingly
             if (userIn.length() % 2 == 1) {
             /*
-            Knowing that the string is has an odd length, the leter b in abc would be the direct middle of the string
+            Knowing that the string is has an odd length, the letter b in abc would be the direct middle of the string
             if abc is in the middle
              */
                 if (userIn.substring(userIn.length() / 2 - 1, userIn.length() / 2 + 2).equals("abc")) {
