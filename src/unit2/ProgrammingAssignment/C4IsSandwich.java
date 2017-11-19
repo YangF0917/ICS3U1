@@ -3,6 +3,14 @@ import codehs.*;
 import java.util.*;
 import java.lang.*;
 
+/**
+ * A simple program that gets the user to input a string
+ * and will output whether the substring between the first
+ * and last indexes of "bread"
+ * @author: F. Yang
+ *
+ */
+
 public class C4IsSandwich extends ConsoleProgram{
     public void run(){
         // Create a variable to hold the user input
