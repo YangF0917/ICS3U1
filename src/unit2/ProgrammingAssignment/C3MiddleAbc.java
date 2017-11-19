@@ -18,6 +18,9 @@ public class C3MiddleAbc extends ConsoleProgram{
         // Get user input from the user
         userIn = readLine("Enter your abc string: \n");
 
+        // Create a boolean value to hold the output at the end and default it to false
+        boolean isAbcMiddle = false;
+
         // First check whether the length of the string is perfectly divisible by 2 and do something accordingly
         if (userIn.length() % 2 == 1)
         {
@@ -25,12 +28,9 @@ public class C3MiddleAbc extends ConsoleProgram{
             Knowing that the string is has an odd length, the leter b in abc would be the direct middle of the string
             if abc is in the middle
              */
-            if (userIn.indexOf("abc") == userIn.length() / 2 - 1)
+            if (userIn.substring(userIn.length() / 2 - 1, userIn.length() / 2 + 2).equals("abc"))
             {
-                System.out.println("true");
-            }
-            else{
-                System.out.println("false");
+                isAbcMiddle = true;
             }
         }
         // The defaulted else is for the even length strings
@@ -41,14 +41,13 @@ public class C3MiddleAbc extends ConsoleProgram{
             AAabcB the index of abc is 2, the string length is 6, so the result would be length / 2 - 1
             These are the only two cases for even numbers therefore if either are correct, then abc is in the middle
              */
-            if (userIn.indexOf("abc") == userIn.length() / 2 - 1 || userIn.indexOf("abc") == userIn.length() / 2 - 2)
+            if (userIn.substring(userIn.length() / 2 - 1, userIn.length() / 2 + 2).equals("abc") || userIn.substring
+                    (userIn.length() / 2 - 2, userIn.length() / 2 + 1).equals("abc"))
             {
-                System.out.println("true");
-            }
-            else{
-                System.out.println("false");
+                isAbcMiddle = true;
             }
         }
+        System.out.println(isAbcMiddle);
 
     }
 }
