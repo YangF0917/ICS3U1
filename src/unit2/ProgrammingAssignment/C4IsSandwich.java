@@ -35,8 +35,10 @@ public class C4IsSandwich extends ConsoleProgram{
         // Create a variable to hold the last index of bread that was found, initialize it at 0 if no bread is found
         int lastBread = 0;
 
-        // Find the last value of bread using a do while loop
-        // Create a blank string to hold the cut original string
+        /*
+        Find the last value of bread using a do while loop
+        Create a blank string to hold the cut original string
+         */
         String userSubstring = "";
         do {
             /*
