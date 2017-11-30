@@ -19,6 +19,7 @@ public class C4IsSandwich extends ConsoleProgram{
 
         // Find the first instance of bread in the string
         int firstBread = userIn.indexOf("bread");
+
         /*
          There is the possibility that the string does not find an index for "bread" and will output -1, therefore
          if that is the case, then change the -1 to a 0 as the following code will keep lastBread to be 0 if there
