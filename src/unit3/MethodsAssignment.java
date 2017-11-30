@@ -24,11 +24,16 @@ public class MethodsAssignment {
     public static boolean isPerfect(int num){
         int factorSum = 0;
         for (int possFactor = 1; possFactor < num; possFactor++){
-            if (num % possFactor == 0){
-                factorSum += 
+            if (num % possFactor == 0) {
+                factorSum += possFactor;
             }
         }
-        return true;
+        if (factorSum == num){
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     public static void isPerfectTest(){
