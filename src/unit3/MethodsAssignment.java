@@ -36,7 +36,7 @@ public class MethodsAssignment {
         for (int possFactor = 1; possFactor < num; possFactor++){
             // Test whether possFactor is a factor or not
             if (num % possFactor == 0) {
-
+                // If possFactor is a factor of num
                 factorSum += possFactor;
             }
         }
