@@ -40,7 +40,7 @@ public class MethodsAssignment {
                 factorSum += possFactor;
             }
         }
-        if (factorSum == num){
+        if (factorSum == num || num == 1){
             return true;
         }
         else {
@@ -50,7 +50,11 @@ public class MethodsAssignment {
 
     public static void isPerfectTest(){
         System.out.println("Perfect Numbers:");
-        //for (int i = 1; i )
+        for (int i = 0; i <= 10000; i++){
+            if (isPerfect(i)){
+                System.out.println(i);
+            }
+        }
     }
 
     /**
@@ -71,7 +75,9 @@ public class MethodsAssignment {
         int replaceLength = replace.length();
         for (int i = 0; i < user.length(); i++){
             for (int j = 0; j < replaceLength; j++){
-                
+                if (user.charAt(i + j) == replace.charAt(j)){
+
+                }
             }
         }
         return "";
