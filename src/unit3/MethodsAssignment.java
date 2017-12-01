@@ -16,7 +16,7 @@ public class MethodsAssignment {
         //
         censorPlusTest();
 
-        // Call the LCM method tester;
+        // Call the LCM method tester (JUST FOR FUN)
         lcmTest();
     }
 
@@ -87,37 +87,41 @@ public class MethodsAssignment {
 
     }
 
+    // LCM Program was just for fun
     public static int lcm (int var1, int var2){
         int min;
-        if (var1 < var2){
-            min = var1;
+        int ABSvar1 = Math.abs(var1);
+        int ABSvar2 = Math.abs(var2);
+        if (ABSvar1 < ABSvar2){
+            min = ABSvar1;
         }
         else {
-            min = var2;
-        }
-        if (var1 < 0 || var2 < 0){
-            var1 = Math.abs(var1);
-            var2 = Math.abs(var2);
-        }
-        if (var1 == 0 || var2 == 0){
-            return 0;
+            min = ABSvar2;
         }
         int gcf = 0;
-        for (int i = 1; i <= min; i++) {
-                if (var1 % i == 0 && var2 % i == 0) {
+        try {
+            for (int i = 1; i <= min; i++) {
+                if (ABSvar1 % i == 0 && ABSvar2 % i == 0) {
                     gcf = i;
                 }
             }
-            return var1 * var2 / gcf;
+            System.out.print("The LCM of " + var1 + " and " + var2 + " is: ");
+            return ABSvar1 * ABSvar2 / gcf;
+        }
+        catch (ArithmeticException e){
+            System.out.print("Enter a non zero value. ERROR LCM: ");
+            return -1;
+        }
     }
     public static void lcmTest(){
-        System.out.println("The LCM of 3 and 7 is " + lcm(3, 7));
-        System.out.println("The LCM of 2 and 2 is " + lcm(2, 2));
-        System.out.println("The LCM of 6 and 4 is " + lcm(6, 4));
-        System.out.println("The LCM of 7 and 10 is " + lcm(7, 10));
-        System.out.println("The LCM of 3 and 5 is " + lcm(3, 5));
-        // System.out.println(lcm(-5, 5));
-        // System.out.println(lcm(0, 0));
-        // System.out.println(lcm(-5, -7));
+
+        System.out.println(lcm(-5, 5));
+        System.out.println(lcm(3, 7));
+        System.out.println(lcm(2, 2));
+        System.out.println(lcm(6, 4));
+        System.out.println(lcm(7, 10));
+        System.out.println(lcm(3, 5));
+        System.out.println(lcm(0, 0));
+        System.out.println(lcm(-5, -7));
     }
 }
