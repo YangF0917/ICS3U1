@@ -20,6 +20,7 @@ public class MethodsAssignment {
         lcmTest();
     }
 
+    // This one was just for fun
     /**
      * The isPerfect method takes an integer parameter and returns whether the sum of all of the numbers factors is
      * equal to the number itself. Ex. 6 has 3 non equal factors: 1, 2 and 3 and when added together equals the
@@ -64,7 +65,32 @@ public class MethodsAssignment {
      * @return The number of days that the date is away from December 31st of the last year
      */
     public static int dayYear(int day, int month){
-        return 0;
+        int newMonth = month - 1;
+
+        if (newMonth == 0){
+            return day;
+        }
+        else if (month == 2){
+            day += 28;
+            newMonth--;
+            dayYear(day, newMonth);
+        }
+        else if (month % 2 == 1 && month <= 7){
+            day += 31;
+            newMonth--;
+            dayYear(day, newMonth);
+        }
+        else if (month % 2 == 0 && month >= 8){
+            day += 31;
+            newMonth--;
+            dayYear(day, newMonth);
+        }
+        else{
+            day += 30;
+            newMonth--;
+            dayYear(day, newMonth);
+        }
+        return -1;
     }
 
     public static void dayYearTest(){
