@@ -58,9 +58,12 @@ public class MethodsAssignment {
     }
 
     /**
-     * The dayYear method takes two ints
+     * The dayYear method takes two ints and finds what day it is from Janurary 1st
+     * @param day The exact day nuber of a certain month
+     * @param month Month at which the day is found in
+     * @return The number of days that the date is away from December 31st of the last year
      */
-    public static int dayYear(){
+    public static int dayYear(int day, int month){
         return 0;
     }
 
@@ -114,7 +117,6 @@ public class MethodsAssignment {
         }
     }
     public static void lcmTest(){
-
         System.out.println(lcm(-5, 5));
         System.out.println(lcm(3, 7));
         System.out.println(lcm(2, 2));
