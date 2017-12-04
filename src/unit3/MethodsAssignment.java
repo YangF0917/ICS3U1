@@ -70,32 +70,28 @@ public class MethodsAssignment {
         if (newMonth == 0){
             return day;
         }
-        else if (month == 2){
+        else if (newMonth == 2){
             day += 28;
-            newMonth--;
             return dayYear(day, newMonth);
         }
-        else if (month % 2 == 1 && month <= 7){
+        else if (newMonth % 2 == 1 && newMonth <= 7){
             day += 31;
-            newMonth--;
             return dayYear(day, newMonth);
         }
-        else if (month % 2 == 0 && month >= 8){
+        else if (newMonth % 2 == 0 && newMonth >= 8){
             day += 31;
-            newMonth--;
             return dayYear(day, newMonth);
         }
         else{
             day += 30;
-            newMonth--;
             return dayYear(day, newMonth);
         }
     }
 
     public static void dayYearTest(){
         System.out.println(dayYear(31, 12));
-        System.out.println(dayYear(3,1));
-        System.out.println(dayYear(9,1));
+        System.out.println(dayYear(1,3));
+        System.out.println(dayYear(1,9));
     }
 
     /**
