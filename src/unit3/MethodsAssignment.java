@@ -60,7 +60,7 @@ public class MethodsAssignment {
 
     /**
      * The dayYear method takes two ints and finds what day it is from Janurary 1st
-     * @param day The exact day nuber of a certain month
+     * @param day The exact day number of a certain month
      * @param month Month at which the day is found in
      * @return The number of days that the date is away from December 31st of the last year
      */
@@ -73,28 +73,29 @@ public class MethodsAssignment {
         else if (month == 2){
             day += 28;
             newMonth--;
-            dayYear(day, newMonth);
+            return dayYear(day, newMonth);
         }
         else if (month % 2 == 1 && month <= 7){
             day += 31;
             newMonth--;
-            dayYear(day, newMonth);
+            return dayYear(day, newMonth);
         }
         else if (month % 2 == 0 && month >= 8){
             day += 31;
             newMonth--;
-            dayYear(day, newMonth);
+            return dayYear(day, newMonth);
         }
         else{
             day += 30;
             newMonth--;
-            dayYear(day, newMonth);
+            return dayYear(day, newMonth);
         }
-        return -1;
     }
 
     public static void dayYearTest(){
-
+        System.out.println(dayYear(31, 12));
+        System.out.println(dayYear(3,1));
+        System.out.println(dayYear(9,1));
     }
 
     /**
@@ -105,7 +106,7 @@ public class MethodsAssignment {
         for (int i = 0; i < user.length(); i++){
             for (int j = 0; j < replaceLength; j++){
                 if (user.charAt(i + j) == replace.charAt(j)){
-
+                    // Hello Sir
                 }
             }
         }
