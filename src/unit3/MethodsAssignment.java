@@ -119,9 +119,10 @@ public class MethodsAssignment {
         int replaceLength = keep.length();
         if (user.indexOf(keep) == -1){
             String pluses = "";
-            for (int i = 0; i < keep.length(); i++){
-                
+            for (int i = 0; i < keep.length()-1; i++){
+                pluses += "+";
             }
+            return pluses;
         }
         else {
             int first = user.indexOf(keep);
@@ -129,12 +130,14 @@ public class MethodsAssignment {
             for (int i = 0; i < first; i++){
                 pluses += "+";
             }
-            return pluses + keep + censorPlus(user.substring(first + replaceLength -1), keep);
+            return pluses + keep + censorPlus(user.substring(first + replaceLength), keep);
         }
     }
 
     public static void censorPlusTest(){
-
+        System.out.println(censorPlus("12xy34abxyc", "xy"));
+        //censorPlus();
+        //censorPlus();
     }
 
     // LCM Program was just for fun
