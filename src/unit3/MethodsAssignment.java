@@ -118,10 +118,19 @@ public class MethodsAssignment {
     public static String censorPlus(String user, String keep){
         int replaceLength = keep.length();
         if (user.indexOf(keep) == -1){
-            throw new IllegalArgumentException("Nothing can be censored");
+            String pluses = "";
+            for (int i = 0; i < keep.length(); i++){
+                
+            }
         }
-        int first = user.indexOf()
-        return "";
+        else {
+            int first = user.indexOf(keep);
+            String pluses = "";
+            for (int i = 0; i < first; i++){
+                pluses += "+";
+            }
+            return pluses + keep + censorPlus(user.substring(first + replaceLength -1), keep);
+        }
     }
 
     public static void censorPlusTest(){
