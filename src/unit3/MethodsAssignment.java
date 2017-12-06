@@ -7,13 +7,13 @@ public class MethodsAssignment {
         // Just in case the user wants to test a certain case
         Scanner sc = new Scanner (System.in);
 
-        //
+        // Calling the isPerfect testing method
         isPerfectTest();
 
-        //
+        // Calling the dayYear testing method
         dayYearTest();
 
-        //
+        // Calling the censorPlus testing method
         censorPlusTest();
 
         // Call the LCM method tester (JUST FOR FUN)
@@ -65,6 +65,7 @@ public class MethodsAssignment {
      * @return The number of days that the date is away from December 31st of the last year
      */
     public static int dayYear(int day, int month){
+        // Set the temporary month to be the month they enter -1
         int newMonth = month - 1;
 
         if (newMonth == 0){
@@ -89,23 +90,37 @@ public class MethodsAssignment {
     }
 
     public static void dayYearTest(){
-        System.out.println(dayYear(31, 12));
-        System.out.println(dayYear(1,3));
-        System.out.println(dayYear(1,9));
+        // Test 1:
+        System.out.println("Test 1:");
+        System.out.println("dayYear(31, 12)");
+        System.out.println("Expected result: 365");
+        System.out.println("Actual Result: " + dayYear(31, 12));
+
+        // Test 2:
+        System.out.println("Test 2:");
+        System.out.println("dayYear(1, 20)");
+        System.out.println("Expected result: Illegal Argument: Month > 12 or Month < 0");
+        System.out.println(dayYear(1,20));
+
+        // Test 3:
+        System.out.println("Test 3:");
+        System.out.println("dayYear(31, 2");
+        System.out.println("Expected result: Illegal Argument: Illegal day number");
+        System.out.println(dayYear(31,2));
     }
 
     /**
-     *
+     * Takes a 2 strings and censors a string with pluses except for instances of the other string
+     * @param user is the string that will be censored
+     * @param keep is the string that will be left uncensored
+     * @return The final censored string
      */
-    public static String censorPlus(String user, String replace){
-        int replaceLength = replace.length();
-        for (int i = 0; i < user.length(); i++){
-            for (int j = 0; j < replaceLength; j++){
-                if (user.charAt(i + j) == replace.charAt(j)){
-                    // Hello Sir
-                }
-            }
+    public static String censorPlus(String user, String keep){
+        int replaceLength = keep.length();
+        if (user.indexOf(keep) == -1){
+            throw new IllegalArgumentException("Nothing can be censored");
         }
+        int first = user.indexOf()
         return "";
     }
 
