@@ -117,9 +117,19 @@ public class MethodsAssignment {
      */
     public static String censorPlus(String user, String keep){
         int replaceLength = keep.length();
-        if (user.indexOf(keep) == -1){
+        if (user.equals("")){
+            return "";
+        }
+        else if (keep.equals("")){
             String pluses = "";
-            for (int i = 0; i < keep.length()-1; i++){
+            for (int i = 0; i < user.length(); i++){
+                pluses += "+";
+            }
+            return pluses;
+        }
+        else if (user.indexOf(keep) == -1){
+            String pluses = "";
+            for (int i = 0; i < user.length(); i++){
                 pluses += "+";
             }
             return pluses;
@@ -135,9 +145,14 @@ public class MethodsAssignment {
     }
 
     public static void censorPlusTest(){
+        // Test 1
+        System.out.println("Test 1:");
+        
         System.out.println(censorPlus("12xy34abxyc", "xy"));
-        //censorPlus();
-        //censorPlus();
+        // Test 2
+        System.out.println(censorPlus("", "hello"));
+        // Test 3
+        System.out.println(censorPlus("hello", ""));
     }
 
     // LCM Program was just for fun
