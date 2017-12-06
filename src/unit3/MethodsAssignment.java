@@ -1,6 +1,12 @@
 package unit3;
 import java.util.Scanner;
 
+/**
+ * Four methods that have their own respective testing methods to call and run the method to test for its accuracy
+ *
+ * @author Y. Felix
+ */
+
 public class MethodsAssignment {
 
     public static void main (String[] args){
@@ -147,12 +153,21 @@ public class MethodsAssignment {
     public static void censorPlusTest(){
         // Test 1
         System.out.println("Test 1:");
-        
-        System.out.println(censorPlus("12xy34abxyc", "xy"));
+        System.out.println("censorPlus(\"12xy34abxyc\", \"xy\")");
+        System.out.println("Expected Result: ++xy++++xy+");
+        System.out.println("Actual Result: " + censorPlus("12xy34abxyc", "xy") + "\n");
+
         // Test 2
-        System.out.println(censorPlus("", "hello"));
+        System.out.println("Test 2:");
+        System.out.println("censorPlus(\"\", \"hello\")");
+        System.out.println("Expected Result: ");
+        System.out.println("Actual Result: " + censorPlus("", "hello") + "\n");
+
         // Test 3
-        System.out.println(censorPlus("hello", ""));
+        System.out.println("Test 3:");
+        System.out.println("censorPlus(\"hello\", \"\")");
+        System.out.println("Expected Result: +++++");
+        System.out.println("Actual Result: " + censorPlus("hello", "") + "\n");
     }
 
     // LCM Program was just for fun
