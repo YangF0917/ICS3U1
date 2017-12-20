@@ -41,4 +41,11 @@ public class ArraysAssignment {
         }
     }
 
+    public static int closeBy2 (int [] firstUser, int [] secondUser){
+        int counter = 0;
+        for (int index = 0; index < firstUser.length; index++){
+
+        }
+    }
+
 }
