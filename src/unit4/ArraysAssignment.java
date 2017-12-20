@@ -8,13 +8,21 @@ import java.util.Scanner;
  */
 
 public class ArraysAssignment {
-    public static void main (String [] args){
-        Scanner sc = new Scanner (System.in);
-        int [] user = {1, 2, 3};
+    public static void main (String [] args) {
+        Scanner sc = new Scanner(System.in);
+        int[] user = {1, 2, 3};
         System.out.println(Arrays.toString(shiftLeft3(user)));
 
-        int [] user2 = {1, 2, 1, 4, 1, 1, 4, 5, 1};
+        int[] user2 = {1, 2, 1, 4, 1, 1, 4, 5, 1};
         System.out.println(pairEverywhere(user2, 1));
+
+        int [][] user3 = printPascal(10,10);
+        for (int i = 0; i < 10; i++){
+            for (int j = 0; j < 10; j++){
+                System.out.print(user3[i][j] + " ");
+            }
+            System.out.print("\n");
+        }
     }
     public static int [] shiftLeft3(int [] user){
         int temp = user[0];
