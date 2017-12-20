@@ -51,4 +51,19 @@ public class ArraysAssignment {
         return counter;
     }
 
+    public static int [][] printPascal(int columns, int rows){
+        int [][] pascalTriangle = new int [columns][rows];
+        for (int i = 0; i < columns; i++){
+            for(int j = 0; j < rows; j++){
+                if (i == 0 || j == 0){
+                    pascalTriangle [i][j] = 1;
+                }
+                else{
+                    pascalTriangle [i][j] = pascalTriangle [i - 1][j] + pascalTriangle [i][j - 1];
+                }
+            }
+        }
+        return pascalTriangle;
+    }
+
 }
