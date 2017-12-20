@@ -12,6 +12,9 @@ public class ArraysAssignment {
         Scanner sc = new Scanner (System.in);
         int [] user = {1, 2, 3};
         System.out.println(Arrays.toString(shiftLeft3(user)));
+
+        int [] user2 = {1, 2, 1, 4, 1, 1, 4, 5, 1};
+        System.out.println(pairEverywhere(user2, 1));
     }
     public static int [] shiftLeft3(int [] user){
         int temp = user[0];
@@ -22,6 +25,20 @@ public class ArraysAssignment {
             temp = bring;
         }
         return user;
+    }
+    public static boolean pairEverywhere(int [] user, int everywhere){
+        int coverCounter = 0;
+        for (int i = 0; i < user.length; i++){
+            if (user[i] == everywhere || user[i+1] == everywhere || user[i-1] == everywhere){
+                coverCounter++;
+            }
+        }
+        if (coverCounter == user.length){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
 }
