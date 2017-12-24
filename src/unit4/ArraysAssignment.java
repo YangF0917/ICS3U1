@@ -26,9 +26,11 @@ public class ArraysAssignment {
     }
 
     /**
+     * A simple method that takes in an integer array from the user and will return an array with its elements
+     * shifted to the left one space
      *
-     * @param user
-     * @return
+     * @param user The array that will be shifted
+     * @return The shifted array
      */
 
     public static int [] shiftLeft3(int [] user){
@@ -43,10 +45,13 @@ public class ArraysAssignment {
     }
 
     /**
+     * A simple method that receives 2 parameters, one being the array and one being a number to check for.
+     * The method will return true if every space in the array is or is adjacent to the number. Otherwise it will
+     * return false
      *
-     * @param user
-     * @param everywhere
-     * @return
+     * @param user The array that the user will input to check for the number
+     * @param everywhere The number that the method checks whether it is "Everywhere"
+     * @return true or false
      */
 
     public static boolean pairEverywhere(int [] user, int everywhere){
@@ -65,10 +70,12 @@ public class ArraysAssignment {
     }
 
     /**
+     * A simple method that takes in 2 integer arrays and outputs true if every corresponding element in each array is
+     * less than 2 apart and false otherwise.
      *
-     * @param firstUser
-     * @param secondUser
-     * @return
+     * @param firstUser The first array that the user inputs
+     * @param secondUser The second array that the user inputs
+     * @return true or false
      */
 
     public static int closeBy2 (int [] firstUser, int [] secondUser){
@@ -82,12 +89,13 @@ public class ArraysAssignment {
     }
 
     /**
+     * A simple method that takes in 2 numbers from the user and prints out a pascals grid using those 2 numbers
      *
-     * @param columns
-     * @param rows
-     * @return
+     * @param columns the number of columns the grid will have
+     * @param rows the number of rows the grid will have
+     * @return the pascals grid
      */
-    
+
     public static int [][] printPascal(int columns, int rows){
         int [][] pascalTriangle = new int [columns][rows];
         for (int i = 0; i < columns; i++){
