@@ -24,6 +24,13 @@ public class ArraysAssignment {
             System.out.print("\n");
         }
     }
+
+    /**
+     *
+     * @param user
+     * @return
+     */
+
     public static int [] shiftLeft3(int [] user){
         int temp = user[0];
         int bring;
@@ -34,6 +41,14 @@ public class ArraysAssignment {
         }
         return user;
     }
+
+    /**
+     *
+     * @param user
+     * @param everywhere
+     * @return
+     */
+
     public static boolean pairEverywhere(int [] user, int everywhere){
         int coverCounter = 0;
         for (int i = 0; i < user.length; i++){
@@ -49,6 +64,13 @@ public class ArraysAssignment {
         }
     }
 
+    /**
+     *
+     * @param firstUser
+     * @param secondUser
+     * @return
+     */
+
     public static int closeBy2 (int [] firstUser, int [] secondUser){
         int counter = 0;
         for (int index = 0; index < firstUser.length; index++){
@@ -59,6 +81,13 @@ public class ArraysAssignment {
         return counter;
     }
 
+    /**
+     *
+     * @param columns
+     * @param rows
+     * @return
+     */
+    
     public static int [][] printPascal(int columns, int rows){
         int [][] pascalTriangle = new int [columns][rows];
         for (int i = 0; i < columns; i++){
@@ -73,5 +102,4 @@ public class ArraysAssignment {
         }
         return pascalTriangle;
     }
-
 }
