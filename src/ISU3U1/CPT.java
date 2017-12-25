@@ -10,17 +10,19 @@ public class CPT {
     public static final String [] Home1 = {};
     public static final String [] Home2 = {};
     public static final String [] AbandonedWarehouse = {};
-    public static final String [] WaterPump = {};
+    public static String [] AbandonedWarehouseDirections = {"S2", "E2S4", "N0E3S5W1", "S6W2", "N1E5S7", "N2E6S8W4", "N3S9W5",
+    "N4E8", "N5E9W7","N6W8"};
+    public static final String [] WaterPump = {"You are fully hydrated"};
     public static final String [] Library = {};
     public static final String [] ResearchLab = {};
     public static int TutorialKeys = 0;
     public static final String [] TutorialLocation = {"You are at the Entrance. (N)", "North you see an intersection (N)", "Get" +
             "ting closer to the intersection (N)", "The hallway splits in 2 directions, East and West. (E, W)", "You find a key! (E)", "" +
-            "The hallway extends 2 directions, East and West. (E, W)", "The hallway extends in 2 directions, East and West (E, W)", "" +
             "There's a locked gate. Looks like there's a keyhole (W, N)", "You require a password to continue. (Enter: 1234)(N)","" +
             "Everytime you move on the world map, it takes 1 water, if you run out, you black out. You can refill your water" +
             "at a Water pump. (N)", "Actions require energy, you can regain energy from eating at a kitchen or sleeping in a bed. (N)",
             "You reached the exit of the tutorial, when you exit a location, you will be brought to the world map."};
+    public static String [] TutorialDirections = {"N1", "N2S0", "N3S1", "W4E5S2", "E3", "W3N6","S5N7","S6N8","S7N9","S8"};
     public static String[][] places = {Home1, AbandonedWarehouse, WaterPump, Library, ResearchLab};
     public static int HydrationWatch = 1;
     public static int EnergyWatch = 100;
@@ -50,7 +52,14 @@ public class CPT {
         return "";
     }
     public static void WaterpumpNavigation(){
+        System.out.println(WaterPump[0]);
+        if(Exit()){
 
+        }
+        else{
+            System.out.println("You are already fully hydrated: ");
+            WaterpumpNavigation();
+        }
     }
     public static void AbandonedWarehouseNavigation(){
 
@@ -82,10 +91,9 @@ public class CPT {
     }
     public static void tutorial(){
         System.out.println("Move North, East, West or South whenever prompted to by responding" +
-                "N, E, W or S respectively.");
+                " N, E, W or S respectively, Available directions are shown in bracketsY.");
         System.out.println(TutorialLocation[0]);
         NOnly();
-        System.out.println("Good, now continue to move until the intersection.");
     }
     public static void tutorialInterface(){
         System.out.println("Would you like to play a tutorial? Y for Yes and N for No ");
@@ -104,7 +112,7 @@ public class CPT {
     public static void tutorialNavigation(){
         currentroom = 0;
         if (currentroom == 0){
-            
+
         }
     }
     public static boolean enterCheck(){
@@ -150,5 +158,7 @@ public class CPT {
             return false;
         }
     }
+    public static void WorldMapNavigation(){
 
+    }
 }
