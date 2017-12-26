@@ -16,9 +16,9 @@ public class ArraysAssignment {
         int[] user2 = {1, 2, 1, 4, 1, 1, 4, 5, 1};
         System.out.println(pairEverywhere(user2, 1));
 
-        int [][] user3 = printPascal(10,10);
-        for (int i = 0; i < 10; i++){
-            for (int j = 0; j < 10; j++){
+        int [][] user3 = printPascal(3,4);
+        for (int i = 0; i < 3; i++){
+            for (int j = 0; j < 4; j++){
                 System.out.print(user3[i][j] + " ");
             }
             System.out.print("\n");

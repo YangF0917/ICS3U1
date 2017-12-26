@@ -1,20 +1,26 @@
-package ISU3U1;
+package finalproject;
 import java.util.Scanner;
+import java.util.Random;
 
 public class CPT {
-
+    public Random r = new Random();
     public static Scanner sc = new Scanner (System.in);
     public static int currentroom = 0;
+    public static int currentlocation = 0;
     public static int passcode;
     public static int keys = 0;
-    public static final String [] Home1 = {};
+    public static final String [] Home1 = {"You are at the entrance of the home. Would you like to leave? (E, S, W)" +
+            "The living room"};
+    public static String [] Home1Directions = {"S5E1W4", "W0S2", "N1W3", "E2N4", "S3E0", "N0"};
     public static final String [] Home2 = {};
+    public static String [] Home2Directions = {"W4", "N4", "E4", "S4", "N3E0S1W2"};
     public static final String [] AbandonedWarehouse = {};
     public static String [] AbandonedWarehouseDirections = {"S2", "E2S4", "N0E3S5W1", "S6W2", "N1E5S7", "N2E6S8W4", "N3S9W5",
     "N4E8", "N5E9W7","N6W8"};
     public static final String [] WaterPump = {"You are fully hydrated"};
     public static final String [] Library = {};
     public static final String [] ResearchLab = {};
+    public static String [] ResearchLabDirections = {"S2", "E2S4", "N0E3S5W1", "S6W2", "N1E5", "N2E6", "W4", "N3W5"};
     public static int TutorialKeys = 0;
     public static final String [] TutorialLocation = {"You are at the Entrance. (N)", "North you see an intersection (N)", "Get" +
             "ting closer to the intersection (N)", "The hallway splits in 2 directions, East and West. (E, W)", "You find a key! (E)", "" +
@@ -23,7 +29,10 @@ public class CPT {
             "at a Water pump. (N)", "Actions require energy, you can regain energy from eating at a kitchen or sleeping in a bed. (N)",
             "You reached the exit of the tutorial, when you exit a location, you will be brought to the world map."};
     public static String [] TutorialDirections = {"N1", "N2S0", "N3S1", "W4E5S2", "E3", "W3N6","S5N7","S6N8","S7N9","S8"};
-    public static String[][] places = {Home1, AbandonedWarehouse, WaterPump, Library, ResearchLab};
+    public static String[][] places = {Home1, AbandonedWarehouse, WaterPump, Library, ResearchLab, Home2};
+    public static String [][] placesNav = {Home1Directions, AbandonedWarehouseDirections, {""}, {""}, ResearchLabDirections,
+    Home2Directions};
+    public static String [] WorldMapDirections = {""};
     public static int HydrationWatch = 1;
     public static int EnergyWatch = 100;
     public static boolean hasBottle = false;
@@ -32,6 +41,7 @@ public class CPT {
         tutorialInterface();
         introduction();
         interfaceCheck();
+
     }
     public static void introduction(){
         System.out.println("You open your eyes and find yourself on your bed. It's awfully quiet around the house. " +
@@ -53,6 +63,12 @@ public class CPT {
     }
     public static void WaterpumpNavigation(){
         System.out.println(WaterPump[0]);
+        if (hasBottle){
+            HydrationWatch = 5;
+        }
+        else{
+            HydrationWatch = 3;
+        }
         if(Exit()){
 
         }
@@ -72,7 +88,7 @@ public class CPT {
         WaterCheck();
     }
     public static void EnergyCheck(){
-        for (int i = 0; i < 20; i++){
+        for (int i = 0; i < 25; i++){
             System.out.print("~");
         }
         System.out.println("\nEnergy Level: " + EnergyWatch + " / 100");
@@ -84,16 +100,15 @@ public class CPT {
         else{
             System.out.println("Hydration Level: " + HydrationWatch + " / 5");
         }
-        for (int i = 0; i < 20; i++){
+        for (int i = 0; i < 25; i++){
             System.out.print("~");
         }
         System.out.println("");
     }
     public static void tutorial(){
         System.out.println("Move North, East, West or South whenever prompted to by responding" +
-                " N, E, W or S respectively, Available directions are shown in bracketsY.");
-        System.out.println(TutorialLocation[0]);
-        NOnly();
+                " N, E, W or S respectively, Available directions are shown in brackets.");
+        System.out.println("\n" + TutorialLocation[0]);
     }
     public static void tutorialInterface(){
         System.out.println("Would you like to play a tutorial? Y for Yes and N for No ");
@@ -109,12 +124,6 @@ public class CPT {
             tutorialInterface();
         }
     }
-    public static void tutorialNavigation(){
-        currentroom = 0;
-        if (currentroom == 0){
-
-        }
-    }
     public static boolean enterCheck(){
         String enter = sc.nextLine();
         if (enter.equals("")){
@@ -125,29 +134,16 @@ public class CPT {
             return enterCheck();
         }
     }
-
-    public static void NOnly(){
-        if (sc.nextLine().equals("N")){
+    public static String RoomTraveller(){
+        String user = sc.nextLine();
+        if (user.equals("N") || user.equals("E") || user.equals("S") || user.equals("W")) {
+            int newRoomLocation = places[currentlocation][currentroom].indexOf(user) + 1;
+            currentroom = Integer.parseInt(Character.toString(placesNav[currentlocation][currentroom].charAt(newRoomLocation)));
+            return user;
         }
         else{
-            System.out.println("Enter a valid direction: ");
-            NOnly();
-        }
-    }
-    public static void EOnly(){
-        if (sc.nextLine().equals("E")){
-        }
-        else{
-            System.out.println("Enter a valid direction: ");
-            EOnly();
-        }
-    }
-    public static void WOnly(){
-        if (sc.nextLine().equals("W")){
-        }
-        else{
-            System.out.println("Enter a valid direction: ");
-            WOnly();
+            System.out.println("Enter a valid direction.");
+            return RoomTraveller();
         }
     }
     public static boolean Exit(){
