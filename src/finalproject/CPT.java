@@ -3,11 +3,14 @@ import java.util.Scanner;
 import java.util.Random;
 
 public class CPT {
-    public Random r = new Random();
+
+    // Use random to create passcodes and "facts"
+    public static Random r = new Random();
+
     public static Scanner sc = new Scanner (System.in);
     public static int currentroom = 0;
     public static int currentlocation = 5;
-    public static int passcode;
+    public static String passcode;
     public static int keys = 0;
     public static final String [] Home1 = {"You are at the entrance of the home. Would you like to leave? (E, S, W)" +
             "The living room feels awfully chilling. (W, S)", "There seems to still be edible food here. (W, N)", "There" +
@@ -19,14 +22,23 @@ public class CPT {
             "Everything in the bathroom is either rusting or has grown some sort of mold (E)", "Once was a master's bedroom, " +
             "is now the servant to decay. (S)", "Would you like to go down to the first floor? (N, E, S, W)"};
     public static String [] Home2Directions = {"W4", "N4", "E4", "S4", "N3E0S1W2"};
-    public static final String [] AbandonedWarehouse = {};
+
+    // Input Descriptions for the warehouse here
+    public static final String [] AbandonedWarehouse = {""};
+
     public static String [] AbandonedWarehouseDirections = {"S2", "E2S4", "N0E3S5W1", "S6W2", "N1E5S7", "N2E6S8W4", "N3S9W5",
     "N4E8", "N5E9W7","N6W8"};
     public static final String [] WaterPump = {"You are fully hydrated"};
+
+    // Use random to input facts
     public static final String [] Library = {""};
-    public static final String [] ResearchLab = {};
+
+    // Input decriptions for ResearchLab
+    public static final String [] ResearchLab = {""};
+
     public static String [] ResearchLabDirections = {"S2", "E2S4", "N0E3S5W1", "S6W2", "N1E5", "N2E6", "W4", "N3W5"};
     public static int TutorialKeys = 0;
+    public static String TutorialPass = "1234";
     public static final String [] TutorialLocation = {"You are at the Entrance. (N)", "North you see an intersection (N)", "Get" +
             "ting closer to the intersection (N)", "The hallway splits in 2 directions, East and West. (E, W)", "You find a key! (E)", "" +
             "There's a locked gate. Looks like there's a keyhole (W, N)", "You require a password to continue. (Enter: 1234)(N)","" +
@@ -34,18 +46,30 @@ public class CPT {
             " at a Water pump. (N)", "Actions require energy, you can regain energy from eating at a kitchen or sleeping in a bed. (N)",
             "You reached the exit of the tutorial, when you exit a location, you will be brought to the world map."};
     public static String [] TutorialDirections = {"N1", "N2S0", "N3S1", "W4E5S2", "E3", "W3N6","S5N7","S6N8","S7N9","S8"};
-    public static String[][] places = {Home1, AbandonedWarehouse, WaterPump, Library, ResearchLab, Home2};
+    public static String [][] places = {Home1, AbandonedWarehouse, WaterPump, Library, ResearchLab, Home2};
     public static String [][] placesNav = {Home1Directions, AbandonedWarehouseDirections, {}, {}, ResearchLabDirections,
     Home2Directions};
-    public static String [] WorldMapDirections = {""};
+
+    // Change this to a 2D array
+    public static String [] WorldMapDirections = {"N1E2S3W4", "S0", "W0", "N0", "E4"};
+
     public static int HydrationWatch = 1;
     public static int EnergyWatch = 100;
+
+    // Create all the items and store them in one boolean array.
     public static boolean hasBottle = false;
+    public static boolean key1 = false;
+    public static boolean key2 = false;
+    public static boolean key3 = false;
+    public static boolean key4 = false;
+    public static boolean key5 = false;
+    public static boolean [] hasItems = {};
 
     public static void main (String[] args){
         tutorialInterface();
         introduction();
         interfaceCheck();
+        System.out.println(places[currentlocation][currentroom]);
         RoomTraveller();
     }
     public static void introduction(){
@@ -57,9 +81,13 @@ public class CPT {
         System.out.println("\n\u001B[1mThe end of humanity is near.");
         System.out.println("\nYou are almost out of water, you need to find more water.");
     }
+
+    // Figure out how this is going to work
     public static String LibraryNavigation(int bookNumber){
         return "";
     }
+
+    // Implement the exiting
     public static void WaterpumpNavigation(){
         System.out.println(WaterPump[0]);
         if (hasBottle){
@@ -76,6 +104,8 @@ public class CPT {
             WaterpumpNavigation();
         }
     }
+
+    // Implement room navigations using roomtraveller method
     public static void AbandonedWarehouseNavigation(){
 
     }
@@ -86,12 +116,15 @@ public class CPT {
         EnergyCheck();
         WaterCheck();
     }
+
     public static void EnergyCheck(){
         for (int i = 0; i < 25; i++){
             System.out.print("~");
         }
         System.out.println("\nEnergy Level: " + EnergyWatch + " / 100");
     }
+
+    // Make sure that it never goes below 0
     public static void WaterCheck(){
         if (!hasBottle) {
             System.out.println("Hydration Level: " + HydrationWatch + " / 3");
@@ -137,10 +170,18 @@ public class CPT {
     public static void RoomTraveller(){
         String user = sc.nextLine();
         if (user.equals("N") || user.equals("E") || user.equals("S") || user.equals("W")) {
-            int newRoomLocation = ((placesNav[currentlocation])[currentroom]).indexOf(user) + 1;
-            currentroom = Integer.parseInt(Character.toString(placesNav[currentlocation][currentroom].charAt(newRoomLocation)));
-            System.out.println(places[currentlocation][currentroom]);
-            RoomTraveller();
+            // Preset Restrictions here
+            if (placesNav[currentlocation][currentroom].indexOf(user) != -1) {
+                int newRoomLocation = ((placesNav[currentlocation])[currentroom]).indexOf(user) + 1;
+                currentroom = Integer.parseInt(Character.toString(placesNav[currentlocation][currentroom].charAt(newRoomLocation)));
+                System.out.println(places[currentlocation][currentroom]);
+                RoomTraveller();
+            }
+            else{
+                System.out.println("Enter a valid direction.");
+                System.out.println(places[currentlocation][currentroom]);
+                RoomTraveller();
+            }
         }
         else{
             System.out.println("Enter a valid direction.");
@@ -150,6 +191,8 @@ public class CPT {
     }
     public static void TutorialTraveller(){
         String user = sc.nextLine();
+        // Add preconditions before everything
+        // Fix to account for indexoutofbounds error.
         if (user.equals("N") || user.equals("E") || user.equals("S") || user.equals("W")) {
             int newRoomLocation = TutorialDirections[currentroom].indexOf(user) + 1;
             currentroom = Integer.parseInt(Character.toString(TutorialDirections[currentroom].charAt(newRoomLocation)));
@@ -170,6 +213,8 @@ public class CPT {
             return false;
         }
     }
+
+    // Change using the 2D array
     public static void WorldMapNavigation(){
 
     }
