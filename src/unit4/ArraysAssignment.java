@@ -3,13 +3,16 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 /**
- * A group of array methods
+ * A group of array methods each related to a reading / creating an array
+ *
  * @author Y.Felix
  */
 
 public class ArraysAssignment {
     public static void main (String [] args) {
-        Scanner sc = new Scanner(System.in);
+        // In case there is a test that the user would like to try themselves
+        // Scanner sc = new Scanner(System.in);
+
         int[] user = {1, 2, 3};
         System.out.println(Arrays.toString(shiftLeft3(user)));
 

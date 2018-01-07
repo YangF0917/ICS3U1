@@ -83,7 +83,8 @@ public class CPT {
     }
 
     // Figure out how this is going to work
-    public static String LibraryNavigation(int bookNumber){
+    public static String LibraryNavigation(int bookNumber)
+    {
         return "";
     }
 
