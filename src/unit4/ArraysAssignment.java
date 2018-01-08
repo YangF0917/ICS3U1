@@ -157,13 +157,19 @@ public class ArraysAssignment {
 
     public static int closeBy2 (int [] firstUser, int [] secondUser){
 
-        // 
+        // Used to hold how many numbers were "close by 2". Initialized to 0 in the beginning
         int counter = 0;
+
+        // Loops for every index in the array
         for (int index = 0; index < firstUser.length; index++){
+
+            // Checks for every index whether it is "close by" by 2 or less but not the same
             if (Math.abs(firstUser[index] - secondUser[index]) <= 2 && firstUser[index] != secondUser[index]){
+                // Increment counter by 1
                 counter++;
             }
         }
+        // Returns counter in the very end
         return counter;
     }
 
@@ -176,13 +182,21 @@ public class ArraysAssignment {
      */
 
     public static int [][] pascal(int columns, int rows){
+
+        // Creating a 2D array with the dimensions entered by the user
         int [][] pascalTriangle = new int [columns][rows];
+
+        // Using a nested for loop to initialize the pascalTriangle array
         for (int i = 0; i < columns; i++){
             for(int j = 0; j < rows; j++){
+
+                // Checks whether the index accessed is on the very left or top of the 2D array
                 if (i == 0 || j == 0){
+                    // If its on the side, it is equal to 1
                     pascalTriangle [i][j] = 1;
                 }
                 else{
+                    // If it is not on the top or left edge, then add the number above and left of the index to get the value
                     pascalTriangle [i][j] = pascalTriangle [i - 1][j] + pascalTriangle [i][j - 1];
                 }
             }
