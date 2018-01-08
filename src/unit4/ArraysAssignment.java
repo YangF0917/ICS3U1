@@ -1,6 +1,7 @@
 package unit4;
 import java.util.Arrays;
 import java.util.Scanner;
+import java.util.Stack;
 
 /**
  * A group of array methods each related to a reading / creating an array
@@ -13,12 +14,41 @@ public class ArraysAssignment {
         // In case there is a test that the user would like to try themselves
         // Scanner sc = new Scanner(System.in);
 
-        int[] user = {1, 2, 3};
-        System.out.println(Arrays.toString(shiftLeft3(user)));
+        // Testing the shiftLeft3 method
+        System.out.println("Test 1:");
+        int [] test1m1 = {1, 2, 3};
+        System.out.println("shiftLeft3(test1m1)");
+        System.out.println("Expected Result: 2, 3, 1");
+        System.out.println("Actual Result: " + Arrays.toString(shiftLeft3(test1m1)) + "\n");
 
-        int[] user2 = {1, 2, 1, 4, 1, 1, 4, 5, 1};
-        System.out.println(pairEverywhere(user2, 1));
+        System.out.println("Test 2:");
+        int [] test2m1 = {2, 1, 1};
+        System.out.println("shiftLeft3(test2m1)");
+        System.out.println("Expected Result: 1, 1, 2");
+        System.out.println("Actual Result: " + Arrays.toString(shiftLeft3(test2m1)) + "\n");
 
+        // Testing the pairEverywhere method
+        int [] test1m2 = {1, 2, 1, 2};
+        System.out.println("Test 1");
+        System.out.println("pairEverywhere(test1m2, 1)");
+        System.out.println("Expected Result: true");
+        System.out.println("Actual Result: " + pairEverywhere(test1m2, 1) + "\n");
+
+        int [] test2m2 = {1, 2, 2, 1};
+        System.out.println("Test 2");
+        System.out.println("pairEverywhere(test2m2, 1)");
+        System.out.println("Expected Result: true");
+        System.out.println("Actual Result: " + pairEverywhere(test1m2, 1) + "\n");
+
+        int [] test3m2 = {1, 2, 1, 2};
+        System.out.println("Test 3");
+        System.out.println("pairEverywhere(test3m2, 1)");
+        System.out.println("Expected Result: false");
+        System.out.println("Actual Result: " + pairEverywhere(test3m2, 1) + "\n");
+
+        // Testing the closeBy2 method
+
+        // Testing the printPascal method
         int [][] user3 = printPascal(3,4);
         for (int i = 0; i < 3; i++){
             for (int j = 0; j < 4; j++){
@@ -26,6 +56,9 @@ public class ArraysAssignment {
             }
             System.out.print("\n");
         }
+
+        int length = String.valueOf(1000).length();
+        System.out.println(length);
     }
 
     /**
@@ -37,13 +70,26 @@ public class ArraysAssignment {
      */
 
     public static int [] shiftLeft3(int [] user){
+        // Creating a temporary variable to first hold the number at the 1st position in the array
         int temp = user[0];
+
+        // Initialize an integer to hold the old value in the array
         int bring;
+
+        // Starts by accessing the last variable and changing that first
         for (int index = user.length - 1; index >= 0; index--){
+
+            // Bring hold the number that is going to be brought over to the next index on the left
             bring = user[index];
+
+            // Changing the current index to the stored index
             user[index] = temp;
+
+            // Then changing the temporary value to be the number that was originally stored
             temp = bring;
         }
+
+        // After the array has been shifted, return the resulting array
         return user;
     }
 
