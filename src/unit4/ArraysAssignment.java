@@ -75,13 +75,20 @@ public class ArraysAssignment {
 
         // Testing the pascal method
         System.out.println("pascal Method Tests:");
-        int [][] user3 = pascal(10,10);
-        for (int i = 0; i < 10; i++){
-            for (int j = 0; j < 10; j++){
-                System.out.printf("%8s", user3[i][j]);
-            }
-            System.out.print("\n");
-        }
+
+        System.out.println("pascal Method Tests:");
+
+        System.out.println("Test 1:");
+        System.out.println("pascal(3, 4)");
+        pascal(3,4);
+
+        System.out.println("Test 2:");
+        System.out.println("pascal(10, 10)");
+        pascal(10, 10);
+
+        System.out.println("Test 3");
+        System.out.println("pascal(15, 15)");
+        pascal(15, 15);
     }
 
     /**
@@ -222,6 +229,12 @@ public class ArraysAssignment {
                     pascalTriangle [i][j] = pascalTriangle [i - 1][j] + pascalTriangle [i][j - 1];
                 }
             }
+        }
+        for (int i = 0; i < columns; i++){
+            for (int j = 0; j < rows; j++){
+                System.out.printf("%9s", pascalTriangle[i][j]);
+            }
+            System.out.print("\n");
         }
         return pascalTriangle;
     }
