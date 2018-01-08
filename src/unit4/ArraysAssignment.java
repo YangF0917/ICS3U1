@@ -14,6 +14,8 @@ public class ArraysAssignment {
         // Scanner sc = new Scanner(System.in);
 
         // Testing the shiftLeft3 method
+        System.out.println("shiftLeft3 Method Tests: ");
+
         System.out.println("Test 1:");
         int [] test1m1 = {1, 2, 3};
         System.out.println("shiftLeft3(test1m1)");
@@ -27,6 +29,8 @@ public class ArraysAssignment {
         System.out.println("Actual Result: " + Arrays.toString(shiftLeft3(test2m1)) + "\n");
 
         // Testing the pairEverywhere method
+        System.out.println("pairEverywhere Method Tests: ");
+
         int [] test1m2 = {1, 2, 1, 2};
         System.out.println("Test 1");
         System.out.println("pairEverywhere(test1m2, 1)");
@@ -37,7 +41,7 @@ public class ArraysAssignment {
         System.out.println("Test 2");
         System.out.println("pairEverywhere(test2m2, 1)");
         System.out.println("Expected Result: true");
-        System.out.println("Actual Result: " + pairEverywhere(test1m2, 1) + "\n");
+        System.out.println("Actual Result: " + pairEverywhere(test2m2, 1) + "\n");
 
         int [] test3m2 = {2, 2, 1, 2};
         System.out.println("Test 3");
@@ -46,20 +50,38 @@ public class ArraysAssignment {
         System.out.println("Actual Result: " + pairEverywhere(test3m2, 1) + "\n");
 
         // Testing the closeBy2 method
+        System.out.println("closeBy2 Method Tests: ");
 
-        System.out.println();
+        System.out.println("Test 1:");
+        int [] test1m31 = {1, 2, 3, 4, 5, 6};
+        int [] test1m32 = {2, 0, 4, 2, 6, 1};
+        System.out.println("closeBy2(test1m31, test1m32)");
+        System.out.println("Expected Result: 5");
+        System.out.println("Actual Result: " + closeBy2(test1m31, test1m32) + "\n");
 
-        // Testing the printPascal method
-        int [][] user3 = pascal(3,4);
-        for (int i = 0; i < 3; i++){
-            for (int j = 0; j < 4; j++){
-                System.out.print(user3[i][j] + " ");
+        System.out.println("Test 2:");
+        int [] test2m31 = {1, 2, 3, 4, 5, 6};
+        int [] test2m32 = {1, 2, 3, 4, 5, 6};
+        System.out.println("closeBy2(test2m31, test2m32)");
+        System.out.println("Expected Result: 0");
+        System.out.println("Actual Result: " + closeBy2(test2m31, test2m32) + "\n");
+
+        System.out.println("Test 3:");
+        int [] test3m31 = {-1, -2, 1, 7, -7, 0};
+        int [] test3m32 = {-3, 0, -1, -8, -8, -2};
+        System.out.println("closeBy2(test3m31, test3m32)");
+        System.out.println("Expected Result: 5");
+        System.out.println("Actual Result: " + closeBy2(test3m31, test3m32) + "\n");
+
+        // Testing the pascal method
+        System.out.println("pascal Method Tests:");
+        int [][] user3 = pascal(10,10);
+        for (int i = 0; i < 10; i++){
+            for (int j = 0; j < 10; j++){
+                System.out.printf("%8s", user3[i][j]);
             }
             System.out.print("\n");
         }
-
-        int length = String.valueOf(1000).length();
-        System.out.println(length);
     }
 
     /**
