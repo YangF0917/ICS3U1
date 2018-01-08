@@ -1,7 +1,6 @@
 package unit4;
 import java.util.Arrays;
 import java.util.Scanner;
-import java.util.Stack;
 
 /**
  * A group of array methods each related to a reading / creating an array
@@ -40,7 +39,7 @@ public class ArraysAssignment {
         System.out.println("Expected Result: true");
         System.out.println("Actual Result: " + pairEverywhere(test1m2, 1) + "\n");
 
-        int [] test3m2 = {1, 2, 1, 2};
+        int [] test3m2 = {2, 2, 1, 2};
         System.out.println("Test 3");
         System.out.println("pairEverywhere(test3m2, 1)");
         System.out.println("Expected Result: false");
@@ -48,8 +47,10 @@ public class ArraysAssignment {
 
         // Testing the closeBy2 method
 
+        System.out.println();
+
         // Testing the printPascal method
-        int [][] user3 = printPascal(3,4);
+        int [][] user3 = pascal(3,4);
         for (int i = 0; i < 3; i++){
             for (int j = 0; j < 4; j++){
                 System.out.print(user3[i][j] + " ");
@@ -104,12 +105,39 @@ public class ArraysAssignment {
      */
 
     public static boolean pairEverywhere(int [] user, int everywhere){
+        // Counts how many indexes are covered by the everywhere variable
         int coverCounter = 0;
+
+        // Loops through all indexes in the user's array
         for (int i = 0; i < user.length; i++){
-            if (user[i] == everywhere || user[i+1] == everywhere || user[i-1] == everywhere){
+
+            // First checks whether the index accessed is the last or first index and modifies the check accordingly
+            if (i == 0) {
+
+                // If the number or the number ahead of it is the everywhere variable, then add one to coverCounter
+                if (user[i] == everywhere || user[i + 1] == everywhere) {
+                    coverCounter++;
+                }
+            }
+
+            // If not the first index, it checks whether it is accessing the last index
+            else if (i == user.length - 1) {
+
+                // If the number before it or the number is the everywhere variable, then add one to coverCounter
+                if (user[i] == everywhere || user[i - 1] == everywhere) {
+                    coverCounter++;
+                }
+            }
+
+            // Otherwise check whether the number, the number before or after is equal to everywhere
+            else if (user[i] == everywhere || user[i + 1] == everywhere || user[i - 1] == everywhere){
+
+                // Adds one to coverCounter if the condition is met
                 coverCounter++;
             }
         }
+
+        // At the end checks whether all indexes were beside or were the everywhere variable
         if (coverCounter == user.length){
             return true;
         }
@@ -128,6 +156,8 @@ public class ArraysAssignment {
      */
 
     public static int closeBy2 (int [] firstUser, int [] secondUser){
+
+        // 
         int counter = 0;
         for (int index = 0; index < firstUser.length; index++){
             if (Math.abs(firstUser[index] - secondUser[index]) <= 2 && firstUser[index] != secondUser[index]){
@@ -145,7 +175,7 @@ public class ArraysAssignment {
      * @return the pascals grid
      */
 
-    public static int [][] printPascal(int columns, int rows){
+    public static int [][] pascal(int columns, int rows){
         int [][] pascalTriangle = new int [columns][rows];
         for (int i = 0; i < columns; i++){
             for(int j = 0; j < rows; j++){
