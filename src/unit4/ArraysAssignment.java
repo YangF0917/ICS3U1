@@ -76,8 +76,6 @@ public class ArraysAssignment {
         // Testing the pascal method
         System.out.println("pascal Method Tests:");
 
-        System.out.println("pascal Method Tests:");
-
         System.out.println("Test 1:");
         System.out.println("pascal(3, 4)");
         pascal(3,4);
@@ -141,7 +139,12 @@ public class ArraysAssignment {
         for (int i = 0; i < user.length; i++){
 
             // First checks whether the index accessed is the last or first index and modifies the check accordingly
-            if (i == 0) {
+            if (user.length == 1){
+                if (user[i] == everywhere){
+                    coverCounter++;
+                }
+            }
+            else if (i == 0) {
 
                 // If the number or the number ahead of it is the everywhere variable, then add one to coverCounter
                 if (user[i] == everywhere || user[i + 1] == everywhere) {
