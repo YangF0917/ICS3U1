@@ -6,25 +6,38 @@ public class CPT {
 
     // Use random to create passcodes and "facts"
     public static Random r = new Random();
+    public static int a = r.nextInt(10);
 
     public static Scanner sc = new Scanner (System.in);
     public static int currentroom = 0;
     public static int currentlocation = 5;
     public static String passcode;
-    public static int keys = 0;
-    public static final String [] Home1 = {"You are at the entrance of the home. Would you like to leave? (E, S, W)" +
-            "The living room feels awfully chilling. (W, S)", "There seems to still be edible food here. (W, N)", "There" +
-            " seems to be a note written on the office walls... It's indecipherable. (N, E)", "The garage door is falling" +
-            " apart. There's a smell of decay here. (E, S)", "Would you like to move to the second floor? (N)"};
+    public static boolean tkey = false;
+    public static final String [] Home1 = {"You are at the entrance of the home. The living room is to the East, Stairs" +
+            "to the second floor are to the south and the garage is to the west. (E, S, W)" +
+            "The living room feels awfully chilling. To the west is the entrance and the kitchen is to the south" +
+            "(W, S)", "There seems to still be edible food here. To the west is the office and to the north is " +
+            "the living room (W, N)", "There" +
+            " seems to be a note written on the office walls... It's indecipherable. To the north is the garage" +
+            " and east is the kitchen. (N, E)", "The garage door is falling" +
+            " apart. There's a smell of decay here. To the east is the entrance and to the south is the office" +
+            "(E, S)", "You are at the stairs, the stairs seem to be falling apart . . . looks like they'll work for another" +
+            "day. (N)"};
     public static String [] Home1Directions = {"S5E1W4", "W0S2", "N1W3", "E2N4", "S3E0", "N0"};
-    public static final String [] Home2 = {"Your bedroom seems to be the only warmth in this house. (W)", "A long abandoned" +
-            " guest bedroom. There hasn't been another guest here since the outbreak. (N)", "Decay is evident beyond doubt. " +
-            "Everything in the bathroom is either rusting or has grown some sort of mold (E)", "Once was a master's bedroom, " +
-            "is now the servant to decay. (S)", "Would you like to go down to the first floor? (N, E, S, W)"};
+    public static final String [] Home2 = {"Your bedroom seems to be the only warmth in this house. The stairs are to the west. " +
+            "(W)", "A long abandoned" +
+            " guest bedroom. There hasn't been another guest here since the outbreak. To the north is stairs. (N)",
+            "Decay is evident beyond doubt. " +
+            "Everything in the bathroom is either rusting or has grown some sort of mold. To the east is the stairs (E)"
+            , "Once was a master's bedroom, " +
+            "is now the servant to decay. The stairs are to the south. (S)",
+            "You are at the stairs of the house. To the north is the master's bedroom, east is your bedroom," +
+            "south is the guest bedroom and west is the bathroom. (N, E, S, W)"};
     public static String [] Home2Directions = {"W4", "N4", "E4", "S4", "N3E0S1W2"};
 
     // Input Descriptions for the warehouse here
-    public static final String [] AbandonedWarehouse = {""};
+    public static final String [] AbandonedWarehouse = {"You are at the entrance of the abandoned warehouse. To the south" +
+            "is first section of the warehouse. (S)"};
 
     public static String [] AbandonedWarehouseDirections = {"S2", "E2S4", "N0E3S5W1", "S6W2", "N1E5S7", "N2E6S8W4", "N3S9W5",
     "N4E8", "N5E9W7","N6W8"};
@@ -51,7 +64,13 @@ public class CPT {
     Home2Directions};
 
     // Change this to a 2D array
-    public static String [] WorldMapDirections = {"N1E2S3W4", "S0", "W0", "N0", "E4"};
+    // public static String [] WorldMapDirections = {"N1E2S3W4", "S0", "W0", "N0", "E4"};
+    // public static int [][] WorldMapDirections = {HomeLocation, AWLocation, WPLocation, LibraryLocation, RLLocation};
+    public static int [] HomeLocation = {1, 2, 3, 4};
+    public static int [] AWLocation = {-1, -1, 0, -1};
+    public static int [] WPLocation = {-1, -1, -1, 0};
+    public static int [] LibraryLocation = {0, -1, -1, -1};
+    public static int [] RLLocation = {-1, 0, -1, -1};
 
     public static int HydrationWatch = 1;
     public static int EnergyWatch = 100;
@@ -63,9 +82,10 @@ public class CPT {
     public static boolean key3 = false;
     public static boolean key4 = false;
     public static boolean key5 = false;
-    public static boolean [] hasItems = {};
+    public static boolean [] hasItems = {hasBottle, key1, key2, key3, key4, key5};
 
     public static void main (String[] args){
+        System.out.println();
         tutorialInterface();
         introduction();
         interfaceCheck();
@@ -75,10 +95,11 @@ public class CPT {
     public static void introduction(){
         System.out.println("You open your eyes and find yourself on your bed. It's awfully quiet around the house. " +
                 "You find a note on the door that says \n\"Evacuation Site: Go towar---------------\"\n" +
-                "The rest of the ink has been smudged by some red liquid. It's been 2 years since the beginning of" +
-                " the plague and no cure has been found yet. The only people left in the to \nClick enter to continue: ");
+                "You haven't taken that note down yet. The rest of the ink has been smudged by some red liquid. " +
+                "It's been 2 years since the beginning of the plague and no cure has been found yet." +
+                "\nClick enter to continue: ");
         enterCheck();
-        System.out.println("\n\u001B[1mThe end of humanity is near.");
+        System.out.println("\n\u001B[1mThe end of humanity is near. You are the only one who can create a cure.");
         System.out.println("\nYou are almost out of water, you need to find more water.");
     }
 
@@ -111,6 +132,12 @@ public class CPT {
 
     }
     public static void ResearchLabNavigation(){
+
+    }
+    public static void HouseF1Navigation(){
+
+    }
+    public static void HouseF2Navigation(){
 
     }
     public static void interfaceCheck(){
@@ -207,16 +234,33 @@ public class CPT {
         }
     }
     public static boolean Exit(){
+        System.out.println("Would you like to leave? (Y, N)");
         if (sc.nextLine().equals("Y")){
             return true;
         }
         else{
+            RoomTraveller();
             return false;
         }
     }
 
     // Change using the 2D array
     public static void WorldMapNavigation(){
+        String direction = sc.nextLine();
+        if (direction.equals("N")){
 
+        }
+        else if (direction.equals("E")){
+
+        }
+        else if (direction.equals("S")){
+
+        }
+        else if (direction.equals("W")){
+
+        }
+        else{
+
+        }
     }
 }
