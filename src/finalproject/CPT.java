@@ -38,8 +38,21 @@ public class CPT {
     public static String [] Home2Directions = {"W4", "N4", "E4", "S4", "N3E0S1W2"};
 
     // Input Descriptions for the warehouse here
-    public static final String [] AbandonedWarehouse = {"You are at the entrance of the abandoned warehouse. To the south" +
-            "is first section of the warehouse. (S)"};
+    public static final String [] AbandonedWarehouse = {"You are at the entrance of the abandoned warehouse. \nTo the south" +
+            " is first section of the warehouse. (S)", "You are in the top left corner of the warehouse" +
+            ". You need a key to open the compartment to the south.\nThe first section" +
+            " of the warehouse is the the east. (E)", "You are in the first compartment of the warehouse.  You need a key" +
+            " to open the compartment to the south.\nTo the North" +
+            " is the entrance, East is the top right corner of the warehouse. (N, E, W)", "You are in the top right corner of the " +
+            "warehouse.  You need a key to open the compartment to the south.\nWest is the first compartment. (W)",
+            "There's a unlocked safe box in this room. To the South and East are locked warehouse sections.\nTo the north" +
+            " is top left corner of the warehouse. (N)", "You are in the middle of the warehouse. There are locked compa" +
+            "rtments to the east, south and west.\nNorth is the first section of the warehouse. (N)", "There's a shelf that" +
+            " might hold something. To the West is a locked warehouse section.\nNorth is the top right corner of the ware" +
+            "house, and there's a smuggler to the south. (N, S)", "You are in the bottom west" +
+            " segment of the warehouse. There are locked compartments to the North and East.\n", "There's a bag in the " +
+            "middle of the room. There are locked compartments to the North and West.\nThere's a smuggler to the east (E)"
+            ,"The smuggler greets you. There are locked compartments to the North and West."};
 
     public static String [] AbandonedWarehouseDirections = {"S2", "E2S4", "N0E3S5W1", "S6W2", "N1E5S7", "N2E6S8W4", "N3S9W5",
     "N4E8", "N5E9W7","N6W8"};
@@ -208,7 +221,7 @@ public class CPT {
                 currentroom = 5;
             }
         }
-        if (currentlocation == 0 && currentroom == 0){
+        if (currentlocation != 5 && currentroom == 0){
             if (Exit()){
                 WorldMapNavigation();
                 currentroom = 0;
@@ -362,6 +375,12 @@ public class CPT {
         return false;
     }
     public static boolean passcodecheck(){
-        
+        System.out.println("Plese enter the password:");
+        if (sc.nextLine().equals(passcode)){
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 }
