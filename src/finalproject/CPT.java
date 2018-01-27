@@ -103,8 +103,6 @@ public class CPT {
     public static int HydrationWatch = 1;
     public static int EnergyWatch = 100;
 
-    public static boolean leave = false;
-
     // Create all the items and store them in one boolean array.
     public static boolean hasBottle = false;
     public static boolean key1 = false;
@@ -364,7 +362,6 @@ public class CPT {
                         " are a lot of books. \nHint remember the last digit of the year of every real book in order from" +
                         " first to last book to get some code... Might come in handy\n It costs 30 energy to read a book");
                 Reading();
-                leave = false;
                 WorldMapNavigation();
             }
         }
@@ -379,19 +376,20 @@ public class CPT {
         }
     }
     public static void Reading(){
+        if(!Exit()) {
             System.out.println("Pick a book numbered 1-10:");
             int bookNum = sc.nextInt() - 1;
             {
                 if (bookNum >= 0 && bookNum <= 9) {
                     System.out.println(LibraryNavigation(bookNum));
                     interfaceCheck();
-                    leave = Exit();
+                    Reading();
                 } else {
                     System.out.println("Enter a valid book number.");
-                    Exit();
-                    leave = Exit();
+                    Reading();
                 }
             }
+        }
     }
     public static void Sleep(){
         System.out.println("Sleeping exhausts 1 water level but replenishes 50 energy at a max of 100");
