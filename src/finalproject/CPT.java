@@ -225,8 +225,8 @@ public class CPT {
                 passcodecorrect = true;
             }
         }
-        if (currentlocation == 5 && currentroom == 0){
-
+        if (currentlocation == 5 && currentroom == 0 && HydrationWatch > 1){
+            Sleep();
         }
         if (currentlocation != 3) {
             System.out.println(places[currentlocation][currentroom]);
