@@ -10,11 +10,10 @@ public class CPT {
     public static String b = Integer.toString(r.nextInt(10));
     public static String c = Integer.toString(r.nextInt(10));
     public static String d = Integer.toString(r.nextInt(10));
-
     public static Scanner sc = new Scanner (System.in);
     public static int currentroom = 0;
     public static int currentlocation = 5;
-    public static String passcode = a+b+c+d;
+    public static String passcode = a + b + c + d;
     public static boolean tkey = false;
     public static boolean tdoor1 = false;
     public static boolean tdoor2 = false;
@@ -376,20 +375,23 @@ public class CPT {
         }
     }
     public static void Reading(){
-        if(!Exit()) {
+        boolean isDone = Exit();
+        if(!isDone) {
             System.out.println("Pick a book numbered 1-10:");
             int bookNum = sc.nextInt() - 1;
-            {
                 if (bookNum >= 0 && bookNum <= 9) {
                     System.out.println(LibraryNavigation(bookNum));
                     interfaceCheck();
-                    Reading();
+                    String a = sc.nextLine();
+                    if(EnergyWatch >= 30) {
+                        Reading();
+                    }
                 } else {
                     System.out.println("Enter a valid book number.");
                     Reading();
+                    String a = sc.nextLine();
                 }
             }
-        }
     }
     public static void Sleep(){
         System.out.println("Sleeping exhausts 1 water level but replenishes 50 energy at a max of 100");
