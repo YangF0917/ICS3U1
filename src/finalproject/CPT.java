@@ -6,12 +6,15 @@ public class CPT {
 
     // Use random to create passcodes and "facts"
     public static Random r = new Random();
-    public static int a = r.nextInt(10);
+    public static String a = Integer.toString(r.nextInt(10));
+    public static String b = Integer.toString(r.nextInt(10));
+    public static String c = Integer.toString(r.nextInt(10));
+    public static String d = Integer.toString(r.nextInt(10));
 
     public static Scanner sc = new Scanner (System.in);
     public static int currentroom = 0;
     public static int currentlocation = 5;
-    public static String passcode = Integer.toString(r.nextInt(8999) + 1000);
+    public static String passcode = a+b+c+d;
     public static boolean tkey = false;
     public static boolean tdoor1 = false;
     public static boolean tdoor2 = false;
@@ -36,8 +39,6 @@ public class CPT {
             "You are at the stairs of the house. \nTo the north is the master's bedroom, east is your bedroom," +
             "south is the guest bedroom and west is the bathroom. (N, E, S, W)"};
     public static String [] Home2Directions = {"W4", "N4", "E4", "S4", "N3E0S1W2"};
-
-    // Input Descriptions for the warehouse here
     public static final String [] AbandonedWarehouse = {"You are at the entrance of the abandoned warehouse. \nTo the south" +
             " is first section of the warehouse. (S)", "You are in the top left corner of the warehouse" +
             ". You need a key to open the compartment to the south.\nThe first section" +
@@ -53,14 +54,19 @@ public class CPT {
             " segment of the warehouse. There are locked compartments to the North and East.\n", "There's a bag in the " +
             "middle of the room. There are locked compartments to the North and West.\nThere's a smuggler to the east (E)"
             ,"The smuggler greets you. There are locked compartments to the North and West."};
-
     public static String [] AbandonedWarehouseDirections = {"S2", "E2S4", "N0E3S5W1", "S6W2", "N1E5S7", "N2E6S8W4", "N3S9W5",
     "N4E8", "N5E9W7","N6W8"};
     public static final String [] WaterPump = {"You are fully hydrated"};
 
-    // Use random to input facts / Cipher
-    public static final String [] Library = {""};
-
+    // Just a btw, these books are intentionally misspelled if they are not part of the password
+    public static final String [] Library = {"Blade Runner by Philip K. Dick, 199"+a+"? . . . What a waste of time.",
+    "Harry Pooter by J.K Rowling, 1989? Interesting...", "Lord of the Things by J.R.R. Tolkien, 1870? What a great read",
+    "The Alchemist by Pablo Coelho, 178"+b+"? Wow, provides amazing insight.", "Lord of the Flies by William Golding" +
+    ", 167"+c+"? Hmmm . . . maybe it should be left aside as a school novel.", "Romeo and Rosaline by William Shakespeare" +
+    ", 1695? Way too lovey-dovey for my taste", "The Hungry Games by Suzanne Collins, 2004? Interesting concept creates" +
+    " a dystopian society for the characters.", "Tweyelight by Stephenie Meyer, 2000? Bleh . . . I'm going to have to " +
+    "wash my hands after that.", "Stranger Things by Erin Healy 198"+d+"? Isn't that a TV show???", "Jeva Basics 101 by" +
+    " Felix Yang, 2030? Wait... That hasn't even come out yet."};
     public static final String [] ResearchLab = {"You are at the entrance of the research lab. \nA hallway is to the south (S)",
     "You are at the lab. \nWould you like to look through a nearby textbook? To the east is the hallway (E)",
     "Old pictures hang on the wall of this otherwise empty hallway.\nTo the east is a research lab, south" +
@@ -69,14 +75,14 @@ public class CPT {
     "You are at the lab. \nWould you like to look through a nearby textbook? To the east is a hallway. (E)",
     "A smell of rusted iron lingers in the air. \nTo the east and west are research labs, the hallway continues north (N, E, W)",
     "You are at the lab. \nWould you like to look through a nearby textbook? To the west is the hallway (W)"};
-    public static String [] ResearchLabDirections = {"S2", "E2", "N0E3S5W1", "W2", "E5", "N2E6W4", "W5"};
+    public static String [] ResearchLabDirections = {"S2", "E2", "N0S5W1", "W2", "E5", "N2E6W4", "W5"};
     public static final String [] TutorialLocation = {"You are at the Entrance. (N)", "North you see an intersection (N)", "Get" +
             "ting closer to the intersection (N)", "The hallway splits in 2 directions, East and West. (E, W)", "There's a table in the" +
             " middle of the room. (E)", "" +
             "There's a locked gate. Looks like there's a keyhole (W, N)", "You require a password to continue. (N)","" +
             "Everytime you move on the world map, it takes 1 water, if you run out, you black out. You can refill your water" +
             " at a Water pump. (N)", "Actions require energy, you can regain energy from eating at a kitchen or sleeping in a bed. (N)",
-            "You reached the exit of the tutorial, when you exit a location, you will be brought to the world map. (S)"};
+            "You reached the exit of the tutorial, when you exit a location, you will be brought to the world map."};
     public static String [] TutorialDirections = {"N1", "N2S0", "N3S1", "W4E5S2", "E3", "W3","S5","S6N8","S7N9","S8"};
     public static String [][] places = {Home1, AbandonedWarehouse, WaterPump, Library, ResearchLab, Home2};
     public static String [][] placesNav = {Home1Directions, AbandonedWarehouseDirections, {}, {}, ResearchLabDirections,
@@ -97,6 +103,8 @@ public class CPT {
     public static int HydrationWatch = 1;
     public static int EnergyWatch = 100;
 
+    public static boolean leave = false;
+
     // Create all the items and store them in one boolean array.
     public static boolean hasBottle = false;
     public static boolean key1 = false;
@@ -104,7 +112,7 @@ public class CPT {
     public static boolean key3 = false;
     public static boolean key4 = false;
     public static boolean key5 = false;
-    public static boolean [] hasItems = {hasBottle, key1, key2, key3, key4, key5};
+    public static boolean passcodecorrect = false;
 
     public static void main (String[] args){
         System.out.println(passcode);
@@ -121,13 +129,12 @@ public class CPT {
         System.out.println("\nYou are almost out of water, you need to find more water.");
     }
 
-    // Figure out how this is going to work
     public static String LibraryNavigation(int bookNumber)
     {
-        return "";
+        EnergyWatch -= 30;
+        return Library[bookNumber];
     }
 
-    // Implement the exiting
     public static void WaterpumpNavigation(){
         System.out.println(WaterPump[0]);
         if (hasBottle){
@@ -144,19 +151,6 @@ public class CPT {
             WaterpumpNavigation();
         }
     }
-
-    public static void AbandonedWarehouseNavigation(){
-
-    }
-    public static void ResearchLabNavigation(){
-
-    }
-    public static void HouseF1Navigation(){
-
-    }
-    public static void HouseF2Navigation(){
-
-    }
     public static void interfaceCheck(){
         EnergyCheck();
         WaterCheck();
@@ -169,7 +163,6 @@ public class CPT {
         System.out.println("\nEnergy Level: " + EnergyWatch + " / 100");
     }
 
-    // Make sure that it never goes below 0
     public static void WaterCheck(){
         if (!hasBottle) {
             System.out.println("Hydration Level: " + HydrationWatch + " / 5");
@@ -227,7 +220,20 @@ public class CPT {
                 currentroom = 0;
             }
         }
-        System.out.println(places[currentlocation][currentroom]);
+        if (currentlocation == 4 && currentroom == 2 && !passcodecorrect){
+            if(passcodecheck()){
+                System.out.println("The storage room is now unlocked.");
+
+                placesNav[currentlocation][currentroom] += "E3";
+                passcodecorrect = true;
+            }
+        }
+        if (currentlocation == 5 && currentroom == 0){
+
+        }
+        if (currentlocation != 3) {
+            System.out.println(places[currentlocation][currentroom]);
+        }
         String user = sc.nextLine();
         System.out.println("");
         if (user.equals("N") || user.equals("E") || user.equals("S") || user.equals("W")) {
@@ -353,13 +359,50 @@ public class CPT {
             if (currentlocation == 2) {
                 WaterpumpNavigation();
             }
+            if (currentlocation == 3){
+                System.out.println("There" +
+                        " are a lot of books. \nHint remember the last digit of the year of every real book in order from" +
+                        " first to last book to get some code... Might come in handy\n It costs 30 energy to read a book");
+                Reading();
+                leave = false;
+                WorldMapNavigation();
+            }
         }
         else{
             System.out.println("You begin to black out . . . It's over...");
             System.out.println("Click enter to restart.");
             if (enterCheck()){
+                currentroom = 0;
+                currentlocation = 5;
                 introduction();
             }
+        }
+    }
+    public static void Reading(){
+            System.out.println("Pick a book numbered 1-10:");
+            int bookNum = sc.nextInt() - 1;
+            {
+                if (bookNum >= 0 && bookNum <= 9) {
+                    System.out.println(LibraryNavigation(bookNum));
+                    interfaceCheck();
+                    leave = Exit();
+                } else {
+                    System.out.println("Enter a valid book number.");
+                    Exit();
+                    leave = Exit();
+                }
+            }
+    }
+    public static void Sleep(){
+        System.out.println("Sleeping exhausts 1 water level but replenishes 50 energy at a max of 100");
+        while(!Exit()){
+            System.out.println("You lie on your bed and take a quick nap. . .");
+            EnergyWatch+=50;
+            if (EnergyWatch > 100){
+                EnergyWatch = 100;
+            }
+            HydrationWatch-=1;
+            interfaceCheck();
         }
     }
     public static boolean tpasscodecheck(){
@@ -375,7 +418,7 @@ public class CPT {
         return false;
     }
     public static boolean passcodecheck(){
-        System.out.println("Plese enter the password:");
+        System.out.println("Please enter the password:");
         if (sc.nextLine().equals(passcode)){
             return true;
         }
