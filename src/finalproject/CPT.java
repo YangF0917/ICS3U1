@@ -51,9 +51,9 @@ public class CPT {
             " might hold something. To the West is a locked warehouse section.\nNorth is the top right corner of the ware" +
             "house, and there's a smuggler to the south. (N, S)", "You are in the bottom west" +
             " segment of the warehouse. There are locked compartments to the North and East.\n", "There's a bag in the " +
-            "middle of the room. There are locked compartments to the North and West.\nThere's a smuggler to the east (E)"
-            ,"The smuggler greets you. There are locked compartments to the North and West."};
-    public static String [] AbandonedWarehouseDirections = {"S2", "E2S4", "N0E3S5W1", "S6W2", "N1E5S7", "N2E6S8W4", "N3S9W5",
+            "middle of the room. There are locked compartments to the North and West.\nThere's a smuggler to the east (E, W)"
+            ,"The smuggler greets you. \nThere are compartments to the North and West. (N, W)"};
+    public static String [] AbandonedWarehouseDirections = {"S2", "E2", "N0E3W1", "W2", "N1E5", "N2E6W4", "N3S9W5",
     "N4E8", "N5E9W7","N6W8"};
     public static final String [] WaterPump = {"You are fully hydrated"};
 
@@ -80,7 +80,7 @@ public class CPT {
             " middle of the room. (E)", "" +
             "There's a locked gate. Looks like there's a keyhole (W, N)", "You require a password to continue. (N)","" +
             "Everytime you move on the world map, it takes 1 water, if you run out, you black out. You can refill your water" +
-            " at a Water pump. (N)", "Actions require energy, you can regain energy from eating at a kitchen or sleeping in a bed. (N)",
+            " at a Water pump. (N)", "Actions require energy, you can regain energy from sleeping in your bed. (N)",
             "You reached the exit of the tutorial, when you exit a location, you will be brought to the world map."};
     public static String [] TutorialDirections = {"N1", "N2S0", "N3S1", "W4E5S2", "E3", "W3","S5","S6N8","S7N9","S8"};
     public static String [][] places = {Home1, AbandonedWarehouse, WaterPump, Library, ResearchLab, Home2};
@@ -102,7 +102,6 @@ public class CPT {
     public static int HydrationWatch = 1;
     public static int EnergyWatch = 100;
 
-    // Create all the items and store them in one boolean array.
     public static boolean hasBottle = false;
     public static boolean key1 = false;
     public static boolean key2 = false;
@@ -112,7 +111,6 @@ public class CPT {
     public static boolean passcodecorrect = false;
 
     public static void main (String[] args){
-        System.out.println(passcode);
         tutorialInterface();
     }
     public static void introduction(){
@@ -226,7 +224,75 @@ public class CPT {
             }
         }
         if (currentlocation == 5 && currentroom == 0 && HydrationWatch > 1){
-            Sleep();
+            System.out.println("Would you like to sleep?");
+            if (sc.nextLine().equals("Y")) {
+                Sleep();
+            }
+        }
+        if (currentlocation == 5 && currentroom == 3 && !key1){
+            System.out.println("You find a key in this room.");
+            key1 = true;
+        }
+        if (currentlocation == 5 && !key2 && currentroom == 1){
+            System.out.println("You find a key in this room.");
+            key2 = true;
+        }
+        if (currentlocation == 0 && currentroom == 3 && !key3){
+            System.out.println("You find a key in this room.");
+            key3 = true;
+        }
+        if (currentlocation == 0 && currentroom == 2 && !key4){
+            System.out.println("You find a key in this room.");
+            key4 = true;
+        }
+        if (currentlocation == 5 && currentroom == 2 && !key5){
+            System.out.println("You find a key in this room.");
+            key5 = true;
+        }
+        if (currentlocation == 1 && currentroom == 1 && key1){
+            System.out.println("The storage compartment to the south is open.");
+            placesNav[currentroom][currentroom] += "S4";
+        }
+        if (currentlocation == 1 && currentroom == 2 && key2){
+            System.out.println("The storage compartment to the south is open.");
+            placesNav[currentroom][currentroom] += "S5";
+        }
+        if (currentlocation == 1 && currentroom == 3 && key3){
+            System.out.println("The storage compartment to the south is open.");
+            placesNav[currentroom][currentroom] += "S6";
+        }
+        if (currentlocation == 1 && currentroom == 4 && key4){
+            System.out.println("The storage compartment to the south is open.");
+            placesNav[currentroom][currentroom] += "S7";
+        }
+        if (currentlocation == 1 && currentroom == 5 && key5){
+            System.out.println("The storage compartment to the south is open.");
+            placesNav[currentroom][currentroom] += "S8";
+        }
+        if (currentlocation == 1 && currentroom == 9){
+            System.out.println("The smuggler can provide you information with some downside... Continue? (Y, N)");
+            if (sc.nextLine().equals("Y")){
+                Smuggler();
+            }
+        }
+        if (currentlocation == 4 && currentroom == 2){
+            System.out.println("You need a password to open the storage room:");
+            if(passcodecheck()){
+                System.out.println("The door shuts behind you. You hear a smugglers laugh as he locks you in.");
+                System.out.println("He will only open the door if you discover the cure or when your body decays and rots due to the fumes.");
+                if(cureordeath()){
+                    System.out.println("You pray that the smuggler was telling the truth about the cure, you mix the" +
+                            "two chemicals in and it works!");
+                    System.out.println("The smuggler opens the door and runs off to the evacuation site to spead the news.");
+                    System.out.println("Looks like all that studying and knowledge was put to good use.");
+                }
+                else{
+                    System.out.println("Immediately after you put the 2 chemicals in, purple fumes burst out.");
+                    System.out.println("They quickly envelop your body and soon you begin to lose consciousness");
+                    System.out.println("You quickly look around and notice your skin turning green.");
+                    System.out.println("The last thing you see is the smuggler pointing a shotgun to your forehead.");
+                }
+            }
         }
         if (currentlocation != 3) {
             System.out.println(places[currentlocation][currentroom]);
@@ -401,8 +467,17 @@ public class CPT {
             if (EnergyWatch > 100){
                 EnergyWatch = 100;
             }
-            HydrationWatch-=1;
+            HydrationWatch -= 1;
             interfaceCheck();
+        }
+    }
+    public static void Smuggler(){
+        if (EnergyWatch >= 50) {
+            EnergyWatch -= 50;
+            System.out.println("Hmm... The cure should be green.");
+        }
+        else{
+            System.out.println("You don't have enough energy to make this exchange.");
         }
     }
     public static boolean tpasscodecheck(){
@@ -420,6 +495,19 @@ public class CPT {
     public static boolean passcodecheck(){
         System.out.println("Please enter the password:");
         if (sc.nextLine().equals(passcode)){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    public static boolean cureordeath(){
+        String ele1 = sc.nextLine();
+        String ele2 = sc.nextLine();
+        if (ele1.equals("B") && ele2.equals("Y")){
+            return true;
+        }
+        else if(ele1.equals("Y") && ele2.equals("B")){
             return true;
         }
         else {
