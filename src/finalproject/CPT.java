@@ -433,7 +433,12 @@ public class CPT {
                 System.out.println("There" +
                         " are a lot of books. \nHint remember the last digit of the year of every real book in order from" +
                         " first to last book to get some code... Might come in handy\n It costs 30 energy to read a book");
-                Reading();
+                if (EnergyWatch >= 30) {
+                    Reading();
+                }
+                else{
+                    System.out.println("You are too tired to read books at the moment. Maybe take a rest.");
+                }
                 WorldMapNavigation();
             }
         }
