@@ -206,7 +206,8 @@ public class CPT {
         if(currentlocation == 5 && currentroom == 4){
             if (Exit()){
                 currentlocation = 0;
-                currentroom = 5;
+                currentroom = 0;
+                System.out.println(places[currentlocation][currentroom]);
             }
         }
         if (currentlocation != 5 && currentroom == 0){
@@ -225,6 +226,7 @@ public class CPT {
         }
         if (currentlocation == 5 && currentroom == 0 && HydrationWatch > 1){
             System.out.println("Would you like to sleep?");
+            System.out.println("Sleeping exhausts 1 water level but replenishes 50 energy at a max of 100");
             if (sc.nextLine().equals("Y")) {
                 Sleep();
             }
@@ -280,6 +282,7 @@ public class CPT {
             }
         }
         if (currentlocation == 0 && currentroom == 5){
+            System.out.println("You are at the stairs of the house.");
             if (Exit()){
                 currentlocation = 5;
                 currentroom = 4;
@@ -470,7 +473,6 @@ public class CPT {
             }
     }
     public static void Sleep(){
-        System.out.println("Sleeping exhausts 1 water level but replenishes 50 energy at a max of 100");
         while(!Exit()){
             System.out.println("You lie on your bed and take a quick nap. . .");
             EnergyWatch+=50;
