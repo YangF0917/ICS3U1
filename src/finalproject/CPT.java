@@ -110,9 +110,17 @@ public class CPT {
     public static boolean key5 = false;
     public static boolean passcodecorrect = false;
 
+    /**
+     * The main method which starts the game
+     * @param args
+     */
     public static void main (String[] args){
         tutorialInterface();
     }
+
+    /**
+     * Starts the introduction description
+     */
     public static void introduction(){
         System.out.println("You open your eyes and find yourself on your bed. It's awfully quiet around the house. " +
                 "You find a note on the door that says \n\"Evacuation Site: Go towar---------------\"\n" +
@@ -124,12 +132,20 @@ public class CPT {
         System.out.println("\nYou are almost out of water, you need to find more water.");
     }
 
+    /**
+     * Used to print the contents of the library
+     * @param bookNumber the book that the user wishes to access
+     * @return the description of the book
+     */
     public static String LibraryNavigation(int bookNumber)
     {
         EnergyWatch -= 30;
         return Library[bookNumber];
     }
 
+    /**
+     * A separate navigation system made for the Water pump
+     */
     public static void WaterpumpNavigation(){
         System.out.println(WaterPump[0]);
         if (hasBottle){
@@ -146,11 +162,18 @@ public class CPT {
             WaterpumpNavigation();
         }
     }
+
+    /**
+     * Method that combines both the WaterCheck() and EnergyCheck() into one smooth method
+     */
     public static void interfaceCheck(){
         EnergyCheck();
         WaterCheck();
     }
 
+    /**
+     * Outputs the energy that the user still has after it changes
+     */
     public static void EnergyCheck(){
         for (int i = 0; i < 25; i++){
             System.out.print("~");
@@ -158,6 +181,9 @@ public class CPT {
         System.out.println("\nEnergy Level: " + EnergyWatch + " / 100");
     }
 
+    /**
+     * Outputs the hydration level of the user
+     */
     public static void WaterCheck(){
         if (!hasBottle) {
             System.out.println("Hydration Level: " + HydrationWatch + " / 5");
@@ -170,11 +196,19 @@ public class CPT {
         }
         System.out.println("");
     }
+
+    /**
+     * Prints out a basic instruction for the user
+     */
     public static void tutorial(){
         System.out.println("Move North, East, West or South whenever prompted to by responding" +
                 " N, E, W or S respectively, Available directions are shown in brackets.");
         TutorialTraveller();
     }
+
+    /**
+     * Prompts the user whether to begin with the tutorial or not
+     */
     public static void tutorialInterface(){
         System.out.println("Would you like to play a tutorial? Y for Yes and N for No ");
         String response = sc.nextLine();
@@ -191,6 +225,11 @@ public class CPT {
             tutorialInterface();
         }
     }
+
+    /**
+     * Simple method that checks whether the user clicks enter
+     * @return true is the user has or false otherwise
+     */
     public static boolean enterCheck(){
         String enter = sc.nextLine();
         if (enter.equals("")){
@@ -201,6 +240,11 @@ public class CPT {
             return enterCheck();
         }
     }
+
+    /**
+     * The bulk of room travelling in the game. It is a recursive method thay continues to run until the game is over
+     * or when the user is out navigating the world map
+     */
     public static void RoomTraveller(){
         // Preset Conditions
         if(currentlocation == 5 && currentroom == 4){
@@ -321,6 +365,11 @@ public class CPT {
             }
         }
     }
+
+    /**
+     * Made a separate method to account for travel in the tutorial map
+     * @return blank string when tutorial is finished or recursively calls itself
+     */
     public static String TutorialTraveller(){
         if (currentroom == 4 && !tkey){
             System.out.println("You found a key!");
@@ -366,6 +415,11 @@ public class CPT {
             return TutorialTraveller();
         }
     }
+
+    /**
+     * Used as the main source of exit of a location.
+     * @return true if the user inputs Y and false otherwise
+     */
     public static boolean Exit(){
         System.out.println("Would you like to leave? (Y, N)");
         if (sc.nextLine().equals("Y")){
@@ -378,6 +432,10 @@ public class CPT {
         }
     }
 
+    /**
+     * Used for navigation across the world map.
+     * Also checks for certain special locations
+     */
     public static void WorldMapNavigation(){
         if (HydrationWatch != 0) {
             System.out.println(placesDes[currentlocation]);
