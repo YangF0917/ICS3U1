@@ -279,6 +279,12 @@ public class CPT {
                 Smuggler();
             }
         }
+        if (currentlocation == 0 && currentroom == 5){
+            if (Exit()){
+                currentlocation = 5;
+                currentroom = 4;
+            }
+        }
         if (currentlocation == 4 && currentroom == 2){
             System.out.println("You need a password to open the storage room:");
             if(passcodecheck()){
