@@ -115,6 +115,7 @@ public class CPT {
      * @param args
      */
     public static void main (String[] args){
+        System.out.println(passcode);
         tutorialInterface();
     }
 
@@ -289,23 +290,23 @@ public class CPT {
         }
         if (currentlocation == 1 && currentroom == 1 && key1){
             System.out.println("The storage compartment to the south is open.");
-            placesNav[currentroom][currentroom] += "S4";
+            placesNav[currentlocation][currentroom] += "S4";
         }
         if (currentlocation == 1 && currentroom == 2 && key2){
             System.out.println("The storage compartment to the south is open.");
-            placesNav[currentroom][currentroom] += "S5";
+            placesNav[currentlocation][currentroom] += "S5";
         }
         if (currentlocation == 1 && currentroom == 3 && key3){
             System.out.println("The storage compartment to the south is open.");
-            placesNav[currentroom][currentroom] += "S6";
+            placesNav[currentlocation][currentroom] += "S6";
         }
         if (currentlocation == 1 && currentroom == 4 && key4){
             System.out.println("The storage compartment to the south is open.");
-            placesNav[currentroom][currentroom] += "S7";
+            placesNav[currentlocation][currentroom] += "S7";
         }
         if (currentlocation == 1 && currentroom == 5 && key5){
             System.out.println("The storage compartment to the south is open.");
-            placesNav[currentroom][currentroom] += "S8";
+            placesNav[currentlocation][currentroom] += "S8";
         }
         if (currentlocation == 1 && currentroom == 7 && !hasBottle){
             System.out.println("You pick up a bottle from the floor... Looks like it can still hold water.");
@@ -503,6 +504,10 @@ public class CPT {
             System.out.println("You begin to black out . . . It's over...");
         }
     }
+
+    /**
+     * Method that accounts for the reading action in the game
+     */
     public static void Reading(){
         boolean isDone = Exit();
         if(!isDone) {
@@ -522,10 +527,14 @@ public class CPT {
                 }
             }
     }
+
+    /**
+     * Method that accounts for the sleeping action in the game
+     */
     public static void Sleep(){
         while(!Exit()){
             System.out.println("You lie on your bed and take a quick nap. . .");
-            EnergyWatch+=50;
+            EnergyWatch += 50;
             if (EnergyWatch > 100){
                 EnergyWatch = 100;
             }
@@ -533,6 +542,10 @@ public class CPT {
             interfaceCheck();
         }
     }
+
+    /**
+     * Method that accounts for receiving information from the smuggler
+     */
     public static void Smuggler(){
         if (EnergyWatch >= 50) {
             EnergyWatch -= 50;
@@ -542,6 +555,11 @@ public class CPT {
             System.out.println("You don't have enough energy to make this exchange.");
         }
     }
+
+    /**
+     * Method that tests whether the user inputs the right password, 5 tries
+     * @return true is the password matches and false otherwise
+     */
     public static boolean tpasscodecheck(){
         for (int i = 0; i < 5; i++) {
             System.out.println("Enter the passcode:");
@@ -554,6 +572,11 @@ public class CPT {
         }
         return false;
     }
+
+    /**
+     * Method that accounts for the password in the actual game.
+     * @return true if the password entered matches and false otherwise
+     */
     public static boolean passcodecheck(){
         System.out.println("Please enter the password:");
         if (sc.nextLine().equals(passcode)){
@@ -563,6 +586,12 @@ public class CPT {
             return false;
         }
     }
+
+    /**
+     * Method that tests for the user's final entry of the game
+     * If they enter the right combo they win else they lose
+     * @return true or false based on if they win or not
+     */
     public static boolean cureordeath(){
         System.out.println("There is an assortment of colourful liquids on the shelf");
         System.out.println("(G)reen, (Y)ellow, (B)lue, (R)ed, (P)urple, (O)range");
