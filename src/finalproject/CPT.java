@@ -111,7 +111,6 @@ public class CPT {
     public static boolean passcodecorrect = false;
 
     public static void main (String[] args){
-        System.out.println(passcode);
         tutorialInterface();
     }
     public static void introduction(){
@@ -444,12 +443,6 @@ public class CPT {
         }
         else{
             System.out.println("You begin to black out . . . It's over...");
-            System.out.println("Click enter to restart.");
-            if (enterCheck()){
-                currentroom = 0;
-                currentlocation = 5;
-                introduction();
-            }
         }
     }
     public static void Reading(){
