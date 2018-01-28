@@ -269,6 +269,10 @@ public class CPT {
             System.out.println("The storage compartment to the south is open.");
             placesNav[currentroom][currentroom] += "S8";
         }
+        if (currentlocation == 1 && currentroom == 7 && !hasBottle){
+            System.out.println("You pick up a bottle from the floor... Looks like it can still hold water.");
+            hasBottle = true;
+        }
         if (currentlocation == 1 && currentroom == 9){
             System.out.println("The smuggler can provide you information with some downside... Continue? (Y, N)");
             if (sc.nextLine().equals("Y")){
