@@ -111,6 +111,7 @@ public class CPT {
     public static boolean passcodecorrect = false;
 
     public static void main (String[] args){
+        System.out.println(passcode);
         tutorialInterface();
     }
     public static void introduction(){
@@ -216,14 +217,6 @@ public class CPT {
                 currentroom = 0;
             }
         }
-        if (currentlocation == 4 && currentroom == 2 && !passcodecorrect){
-            if(passcodecheck()){
-                System.out.println("The storage room is now unlocked.");
-
-                placesNav[currentlocation][currentroom] += "E3";
-                passcodecorrect = true;
-            }
-        }
         if (currentlocation == 5 && currentroom == 0 && HydrationWatch > 1){
             System.out.println("Would you like to sleep?");
             System.out.println("Sleeping exhausts 1 water level but replenishes 50 energy at a max of 100");
@@ -288,14 +281,15 @@ public class CPT {
                 currentroom = 4;
             }
         }
-        if (currentlocation == 4 && currentroom == 2){
+        if (currentlocation == 4 && currentroom == 2 && !passcodecorrect){
+            currentroom = 3;
             System.out.println("You need a password to open the storage room:");
             if(passcodecheck()){
                 System.out.println("The door shuts behind you. You hear a smugglers laugh as he locks you in.");
                 System.out.println("He will only open the door if you discover the cure or when your body decays and rots due to the fumes.");
                 if(cureordeath()){
                     System.out.println("You pray that the smuggler was telling the truth about the cure, you mix the" +
-                            "two chemicals in and it works!");
+                            " two chemicals in and it works!");
                     System.out.println("The smuggler opens the door and runs off to the evacuation site to spead the news.");
                     System.out.println("Looks like all that studying and knowledge was put to good use.");
                 }
@@ -307,25 +301,25 @@ public class CPT {
                 }
             }
         }
-        if (currentlocation != 3) {
-            System.out.println(places[currentlocation][currentroom]);
-        }
-        String user = sc.nextLine();
-        System.out.println("");
-        if (user.equals("N") || user.equals("E") || user.equals("S") || user.equals("W")) {
-            if (placesNav[currentlocation][currentroom].indexOf(user) != -1) {
-                int newRoomLocation = ((placesNav[currentlocation])[currentroom]).indexOf(user) + 1;
-                currentroom = Integer.parseInt(Character.toString(placesNav[currentlocation][currentroom].charAt(newRoomLocation)));
-                RoomTraveller();
+        if (!(currentlocation == 4 && currentroom == 3)) {
+            if (currentlocation != 3) {
+                System.out.println(places[currentlocation][currentroom]);
             }
-            else{
+            String user = sc.nextLine();
+            System.out.println("");
+            if (user.equals("N") || user.equals("E") || user.equals("S") || user.equals("W")) {
+                if (placesNav[currentlocation][currentroom].indexOf(user) != -1) {
+                    int newRoomLocation = ((placesNav[currentlocation])[currentroom]).indexOf(user) + 1;
+                    currentroom = Integer.parseInt(Character.toString(placesNav[currentlocation][currentroom].charAt(newRoomLocation)));
+                    RoomTraveller();
+                } else {
+                    System.out.println("Enter a valid direction.");
+                    RoomTraveller();
+                }
+            } else {
                 System.out.println("Enter a valid direction.");
                 RoomTraveller();
             }
-        }
-        else{
-            System.out.println("Enter a valid direction.");
-            RoomTraveller();
         }
     }
     public static String TutorialTraveller(){
@@ -514,6 +508,9 @@ public class CPT {
         }
     }
     public static boolean cureordeath(){
+        System.out.println("There is an assortment of colourful liquids on the shelf");
+        System.out.println("(G)reen, (Y)ellow, (B)lue, (R)ed, (P)urple, (O)range");
+        System.out.println("You NEED to mix 2 of these liquids to find the cure.");
         String ele1 = sc.nextLine();
         String ele2 = sc.nextLine();
         if (ele1.equals("B") && ele2.equals("Y")){
